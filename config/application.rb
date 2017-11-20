@@ -30,6 +30,9 @@ module Trace
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
+    # Devise pt-BR configurations:
+    config.i18n.default_locale = :'pt-BR'
+
     # Don't generate system test files.
     config.generators.system_tests = nil
   end
