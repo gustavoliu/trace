@@ -1,0 +1,45 @@
+
+.banner-content {
+  width: 400px;
+  margin: 50px;
+  align-items: center;
+}
+
+
+.banner {
+  color: white;
+  text-align: center;
+  height: calc(100vh - 70px);
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner_title {
+  width: 80%;
+  margin: 50px;
+  align-items: center;
+}
+
+.banner_wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner_search {
+  color: gray;
+  text-align: center;
+  height: 500px;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
