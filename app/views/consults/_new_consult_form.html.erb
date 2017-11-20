@@ -1,0 +1,10 @@
+<%= simple_form_for( [@patient, @consult] ) do |f| %>
+  <%= f.input :place, collection: Consult.places.keys, label: 'Local'%>
+  <%= f.input :unit_cnes, label: 'CNES Unidade' %>
+  <%= f.input :team_number, label: 'Número da equipe' %>
+
+  <%= f.input :turn, collection: Consult.turns.keys, label: 'Turno'  %>
+  <%= f.button :submit %>
+<% end %>
+
+

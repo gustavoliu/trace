@@ -2,6 +2,7 @@ class ConsultsController < ApplicationController
 
   def new
     @consult = Consult.new
+    @patient = Patient.find(params[:patient_id])
   end
 
   def create
@@ -19,7 +20,7 @@ class ConsultsController < ApplicationController
   private
 
   def consult_params
-    params.require(:consult).permit( :date, :turn, :unit_cnes, :team_number, :place)
+    params.require(:consult).permit( :consult_date, :turn, :unit_cnes, :team_number, :place, :patient_id, :professional_id)
   end
 
 end
