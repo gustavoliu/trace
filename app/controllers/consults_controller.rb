@@ -1,0 +1,2 @@
+class ConsultsController < ApplicationController
+end
