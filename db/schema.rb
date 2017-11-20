@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(version: 20171120163901) do
     t.date "birthday"
     t.string "profession"
     t.string "sus_number"
+
+  end
+
+  create_table "patients", force: :cascade do |t|
+    t.string "full_name"
+    t.date "birthday"
+    t.string "sus_number"
+    t.string "gender"
+    t.string "address"
+    t.string "prontuario_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
