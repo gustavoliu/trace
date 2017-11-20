@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   resources :patients, except: [ :destroy ] do
     resources :consults, only: [ :new, :create ]
   end
+  
+  resources :professionals, only: [ :new, :edit, :destroy, :show, :update ]
 
 end
