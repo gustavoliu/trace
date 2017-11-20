@@ -1,4 +1,4 @@
-<%= simple_form_for(@user) do |f| %>
+<%= simple_form_for([@user, @professional]) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -9,7 +9,7 @@
                 order: [:day, :month, :year] %>
     <%= f.input :professional_number, label: 'Número do registro profissional' %>
     <%= f.input :sus_number, label: 'Número do SUS' %>
-    <%= f.input :photo, as: :atachinary, label: 'Adicione/troque avatar' %>
+    <%= f.input :photo, as: :attachinary, label: 'Adicione/troque avatar' %>
     <%= f.submit "criar usuário", class: "btn btn-primary" %>
 
    </div>
