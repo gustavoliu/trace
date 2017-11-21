@@ -8,7 +8,7 @@ class ConsultsController < ApplicationController
 
   def create
     @consult = Consult.new(consult_params)
-    @consult.patient = Patient.find(params[:patient_id], params[:consult_id])
+    @consult.patient = Patient.find(params[:patient_id])
     @consult.professional = current_user.professional
 
     if @consult.save
