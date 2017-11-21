@@ -21,6 +21,7 @@ class ConsultsController < ApplicationController
   def show
     @consult= Consult.find(params[:id])
     @soap = Soap.new
+    @soaps = @consult.soaps
   end
 
 
