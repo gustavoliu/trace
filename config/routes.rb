@@ -8,9 +8,11 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :patients, except: [ :destroy ] do
-    resources :consults, only: [ :new, :create ] do
-      resources :soaps, only: [ :new, :create ]
-    end
+    resources :consults, only: [ :new, :create, :show ]
+  end
+
+   resources :consults, only: [ :index ] do
+    resources :soaps, only: [ :new, :create ]
   end
 
   resources :professionals, only: [ :new, :edit, :destroy, :show, :update ]
