@@ -1,10 +1,28 @@
 <div class='row'>
   <div class='col-xs-4 col-xs-offset-4'>
-  <h3>Preencha seus dados:</h3>
 
-    <%= render partial: 'professional_form' %>
+  <h3>Complete seu cadastro:</h3>
 
+    <%= simple_form_for(@professional) do |f| %>
+      <%= f.error_notification %>
 
+      <div class="form-inputs">
+        <%= f.input :full_name, label: 'Nome Completo' %>
+        <%= f.input :birthday, label: 'Data de nascimento',
+                    as: :date, start_year: Date.today.year,
+                    end_year: Date.today.year - 100,
+                    order: [:day, :month, :year] %>
+        <%= f.input :sus_number, label: 'Registro SUS' %>
+        <%= f.input :professional_number, label: 'Registro Profissional' %>
+        <%= f.input :profession, label: 'Especialidade' %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.submit 'Finalizar cadastro', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+
+    <!-- password has a specific page in devise to be changed? -->
+    <!-- TODO: implement photo upload -->
   </div>
 </div>
-
