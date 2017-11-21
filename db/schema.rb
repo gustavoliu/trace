@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20171120184315) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-
   create_table "attachinary_files", force: :cascade do |t|
     t.string "attachinariable_type"
     t.bigint "attachinariable_id"
@@ -30,6 +29,7 @@ ActiveRecord::Schema.define(version: 20171120184315) do
     t.datetime "updated_at", null: false
     t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent"
     t.index ["attachinariable_type", "attachinariable_id"], name: "index_attachinariable"
+  end
 
   create_table "consults", force: :cascade do |t|
     t.date "consult_date"
@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 20171120184315) do
     t.integer "patient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-
   end
 
   create_table "patients", force: :cascade do |t|
