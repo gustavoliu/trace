@@ -4,6 +4,16 @@ class PatientsController < ApplicationController
 
   def index
     @patients = Patient.all
+
+    # if params[:address].present?
+    #   @rooms = @patients.near(params[:address], 10)
+    # end
+
+    # @hash = Gmaps4rails.build_markers(@patients) do |patient, marker|
+    #   marker.lat room.latitude
+    #   marker.lng room.longitude
+    #   # marker.infowindow render_to_string(partial: "/rooms/map_box", locals: { room: room })
+    # end
   end
 
   def new
