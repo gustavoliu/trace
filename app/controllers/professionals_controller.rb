@@ -21,7 +21,7 @@ class ProfessionalsController < ApplicationController
   private
 
   def professional_params
-    params.require(:professional).permit(:full_name, :professional_number, :photo, :birthday, :profession, :sus_number)
+    params.require(:professional).permit(:user_id, :full_name, :professional_number, :photo, :birthday, :profession, :sus_number)
   end
 
   def set_professional
