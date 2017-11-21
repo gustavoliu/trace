@@ -1,0 +1,9 @@
+<h1>Soap</h1>
+
+<%= simple_form_for( [@patient, @consult, @soap] ) do |f| %>
+  <%= f.input :complaint, label: 'Queixa' %>
+  <%= f.input :diagnosis, label: 'Diagnóstico' %>
+  <%= f.input :exams, collection: Soap.exams.keys, label: 'Exames' %>
+  <%= f.input :refering, collection: Soap.referings.keys, label: 'Conduta' %>
+  <%= f.button :submit, 'Salvar' %>
+<% end %>
