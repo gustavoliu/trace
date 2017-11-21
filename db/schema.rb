@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20171120184315) do
     t.integer "patient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
+   end
 
   create_table "patients", force: :cascade do |t|
     t.string "full_name"
