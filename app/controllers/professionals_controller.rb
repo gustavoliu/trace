@@ -2,11 +2,13 @@ class ProfessionalsController < ApplicationController
 
   def edit
     @professional = Professional.find(params[:id])
-    @professional.update(professional_params)
-    @professional.save
   end
 
   def update
+    @professional = Professional.find(params[:id])
+    @professional.update(professional_params)
+    @professional.save
+    redirect_to professional_path
   end
 
   def show

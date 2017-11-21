@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_one :professional
-  after_save :create_professional
+  after_create :create_professional
 
   # def google authentication
   #TODO:incluir google auth code
