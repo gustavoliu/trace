@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
   root to: 'pages#home'
 
+  resources :users, only: [:index]
+  root to: 'users#index'
+
   resources :patients, except: [ :destroy ] do
     resources :consults, only: [ :new, :create ] do
       resources :soaps, only: [ :new, :create ]

@@ -3,7 +3,12 @@ class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit]
 
   def index
-    @patients = Patient.all
+
+    if params[:term]
+      @patients = Patient.search_by_full_name(params[:term])
+    else
+      @patients = Patient.all
+    end
 
     # if params[:address].present?
     #   @rooms = @patients.near(params[:address], 10)

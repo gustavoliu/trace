@@ -12,3 +12,7 @@ csv.each do |row|
   d.pop_name = row[2]
   d.save
 end
+
+50.times do
+  Patient.create({name: Faker::Name.full_name})
+end

@@ -1,0 +1,14 @@
+
+
+<%= form_tag patients_path, method: :get do %>
+  <%= text_field_tag 'term', params[:term], placeholder: "Paciente ou número do SUS" %>
+  <%= submit_tag 'Buscar' %>
+<% end %>
+
+<ul>
+  <% @patients.each do |patient| %>
+
+    <li><%= patient.full_name %></li>
+
+  <% end %>
+</ul>
