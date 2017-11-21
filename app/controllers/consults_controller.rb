@@ -20,8 +20,9 @@ class ConsultsController < ApplicationController
 
   def show
     @consult= Consult.find(params[:id])
+    @patient = @consult.patient
     @soap = Soap.new
-    @soaps = @consult.soaps
+    @soaps = @consult.soaps.all
   end
 
 
