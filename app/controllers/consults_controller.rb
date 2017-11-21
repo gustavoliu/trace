@@ -12,7 +12,7 @@ class ConsultsController < ApplicationController
     @consult.professional = current_user.professional
 
     if @consult.save
-      redirect_to new_consult_soap_path(@consult)
+      redirect_to  consult_path(@consult)
     else
       render :new
     end
@@ -20,6 +20,7 @@ class ConsultsController < ApplicationController
 
   def show
     @consult= Consult.find(params[:id])
+    @soap = Soap.new
   end
 
 
