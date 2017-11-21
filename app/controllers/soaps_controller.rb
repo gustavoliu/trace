@@ -3,16 +3,15 @@ class SoapsController < ApplicationController
   def new
     @soap = Soap.new
     @consult = Consult.find(params[:consult_id])
-    @patient = Patient.find(params[:patient_id])
   end
 
   def create
     @soap = Soap.new(soap_params)
+    @consult = Consult.find(params[:consult_id])
     @soap.consult = Consult.find(params[:consult_id])
-    @soap.consult.patient = Patient.find(params[:patient_id])
 
     if @soap.save
-      redirect_to root_path
+      redirect_to consult_path(@consult)
     else
       render :new
     end

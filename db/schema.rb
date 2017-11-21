@@ -8,9 +8,15 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
+<<<<<<< HEAD
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171121160614) do
+ActiveRecord::Schema.define(version: 20171121182309) do
+=======
+# It's strongly recommended that you check this file into your version control system
+ActiveRecord::Schema.define(version: 20171121181607) do
+>>>>>>> 2e50a71b7df3a831295227c4532dd066a6d2137a
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,10 +39,8 @@ ActiveRecord::Schema.define(version: 20171121160614) do
 
   create_table "consults", force: :cascade do |t|
     t.date "consult_date"
-    t.string "turn"
     t.string "unit_cnes"
     t.string "team_number"
-    t.string "place"
     t.integer "professional_id"
     t.integer "patient_id"
   end
@@ -47,6 +51,8 @@ ActiveRecord::Schema.define(version: 20171121160614) do
     t.string "pop_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "place"
+    t.integer "turn"
   end
 
   create_table "patients", force: :cascade do |t|
@@ -70,17 +76,19 @@ ActiveRecord::Schema.define(version: 20171121160614) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.string "unit_cnes"
+    t.string "team_number"
     t.index ["user_id"], name: "index_professionals_on_user_id"
   end
 
   create_table "soaps", force: :cascade do |t|
     t.string "complaint"
     t.string "diagnosis"
-    t.string "exams"
-    t.string "refering"
     t.string "consult_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "exams"
+    t.integer "refering"
   end
 
   create_table "users", force: :cascade do |t|
