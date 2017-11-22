@@ -1,5 +1,6 @@
 class Patient < ApplicationRecord
-
+  include PgSearch
+  pg_search_scope :search_by_full_name, against: [:full_name, :sus_number]
   has_many :consults
   enum gender: [ :Masculino, :Feminino, :Outros ]
 

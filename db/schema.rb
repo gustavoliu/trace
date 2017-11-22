@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171121133722) do
+ActiveRecord::Schema.define(version: 20171121182309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,12 +33,20 @@ ActiveRecord::Schema.define(version: 20171121133722) do
 
   create_table "consults", force: :cascade do |t|
     t.date "consult_date"
-    t.string "turn"
     t.string "unit_cnes"
     t.string "team_number"
-    t.string "place"
     t.integer "professional_id"
     t.integer "patient_id"
+    t.integer "place"
+    t.integer "turn"
+  end
+
+  create_table "diseases", force: :cascade do |t|
+    t.string "ciap_code"
+    t.string "formal_name"
+    t.string "pop_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "patients", force: :cascade do |t|
@@ -62,17 +70,19 @@ ActiveRecord::Schema.define(version: 20171121133722) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.string "unit_cnes"
+    t.string "team_number"
     t.index ["user_id"], name: "index_professionals_on_user_id"
   end
 
   create_table "soaps", force: :cascade do |t|
     t.string "complaint"
     t.string "diagnosis"
-    t.string "exams"
-    t.string "refering"
     t.string "consult_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "exams"
+    t.integer "refering"
   end
 
   create_table "users", force: :cascade do |t|

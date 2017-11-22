@@ -1,0 +1,21 @@
+<div class="banner_search" style="background-image: linear-gradient(-225deg, rgba(150,168,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path('blue.jpg') %>');">
+  <h1 align="left"> Input data once </h1>
+  <h2 align="left"> Know the stats of people under your care </h2>
+
+ <div class="container">
+   <div class="form_patient">
+  <%= form_tag patients_path, method: :get do %>
+  <%= text_field_tag 'term', params[:term], placeholder: " Nome do paciente ou número do SUS ..", class: "search_box" %>
+  <%= submit_tag 'Buscar', class: "btn btn-primary" %>
+<% end %>
+
+<ul>
+  <% @patients.each do |patient| %>
+
+    <li><%= link_to patient.full_name, patient_path(patient) %></li>
+
+  <% end %>
+</ul>
+  </div>
+  </div>
+</div>

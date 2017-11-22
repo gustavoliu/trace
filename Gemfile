@@ -24,6 +24,14 @@ gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'rails-i18n'
+gem 'geocoder'
+gem "gmaps4rails"
+gem 'pg_search'
+
+group :development do
+  gem 'dotenv-rails'
+  gem 'faker'
+end
 
 group :development, :test do
   gem 'pry-byebug'

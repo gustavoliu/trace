@@ -1,0 +1,15 @@
+<h3><%= @patient.full_name.capitalize %>, <%= @patient.age %></h3>
+
+<p> Data: <%= @consult.consult_date %></p>
+
+<%= render 'soaps/form' %>
+<br>
+<% @soaps.each do |s| %>
+<strong><p><%= s.complaint  %></p></strong>
+<ul>
+  <li><%= s.diagnosis %></li>
+  <li><%= s.exams %></li>
+  <li><%= s.refering %></li>
+</ul>
+
+<% end %>

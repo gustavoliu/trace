@@ -3,7 +3,22 @@ class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit]
 
   def index
-    @patients = Patient.all
+
+    if params[:term]
+      @patients = Patient.search_by_full_name(params[:term])
+    else
+      @patients = Patient.all
+    end
+
+    # if params[:address].present?
+    #   @rooms = @patients.near(params[:address], 10)
+    # end
+
+    # @hash = Gmaps4rails.build_markers(@patients) do |patient, marker|
+    #   marker.lat room.latitude
+    #   marker.lng room.longitude
+    #   # marker.infowindow render_to_string(partial: "/rooms/map_box", locals: { room: room })
+    # end
   end
 
   def new
