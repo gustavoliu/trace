@@ -39,8 +39,6 @@ ActiveRecord::Schema.define(version: 20171121133722) do
     t.string "place"
     t.integer "professional_id"
     t.integer "patient_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "patients", force: :cascade do |t|

@@ -10,7 +10,6 @@ class User < ApplicationRecord
   # For Google OmniAuth:
   def self.from_omniauth(access_token)
     data = access_token.info
-    binding.pry
     user = User.where(email: data['email']).first
 
     # Uncomment the section below if you want users to be created if they don't exist
@@ -20,6 +19,12 @@ class User < ApplicationRecord
            password: Devise.friendly_token[0,20]
         )
     end
+
+    professional = user.professional
+    professional.full_name = "#{data.first_name} #{data.last_name}"
+    # professional.google_photo = data.image
+    professional.save
+    binding.pry
     user
   end
 
@@ -29,5 +34,18 @@ class User < ApplicationRecord
     professional = Professional.new
     professional.user = self
     professional.save
+  end
+
+  def self.get_users_name_from_google_oauth(first_name, last_name)
+    if last_name.nil? && first_name.nil?
+      full_name = ""
+    elsif last_name.nil?
+      full_name = first_name
+    elsif first_name.nil?
+      full_name = last_name
+    else
+      full_name = first_name + " " + last_name
+    end
+    full_name
   end
 end
