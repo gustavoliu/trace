@@ -1,10 +1,12 @@
-<h1><%= @patient.full_name %>, <%= @patient.age %> </h1>
 
-<p>Prontuário: <%= @patient.prontuario_number %></p>
-<p>Número SUS: <%= @patient.sus_number %></p>
-<p>Endereço: <%= @patient.address %></p>
-
-<%= link_to 'Nova Consulta',  new_patient_consult_path(@patient), class:'btn btn-success' %>
-
-
-
+<div class="container">
+  <div class="form-title">
+    <br>
+    <h1><%= @patient.full_name %>, <%= @patient.age %> </h1>
+      <p>Prontuário: <%= @patient.prontuario_number %></p>
+      <p>Número SUS: <%= @patient.sus_number %></p>
+      <p>Endereço: <%= @patient.address %></p>
+      <br>
+      <%= link_to 'Nova Consulta',  new_patient_consult_path(@patient), class:'btn btn-success' %>
+<%= link_to 'Editar Dados',  edit_patient_path(@patient), class:'btn btn-success' %>
+<%= link_to 'Editar Consulta',  edit_patient_consult_path(@patient), class:'btn btn-success' %>

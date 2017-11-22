@@ -1,4 +1,5 @@
 class ConsultsController < ApplicationController
+  before_action :set_consult, only: [:show, :edit, :update]
 
   def new
     @consult = Consult.new
@@ -25,8 +26,23 @@ class ConsultsController < ApplicationController
     @soaps = @consult.soaps.all
   end
 
+  def edit
+  end
+
+  def update
+  if @consult.update(consult_params)
+      redirect_to @consult
+    else
+      render :edit
+    end
+  end
+
 
   private
+
+  def set_consult
+    @consult = Consult.find(params[:id])
+  end
 
   def consult_params
     params.require(:consult).permit( :consult_date, :turn, :unit_cnes, :team_number, :place, :patient_id, :professional_id)

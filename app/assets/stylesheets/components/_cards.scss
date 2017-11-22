@@ -1,0 +1,38 @@
+.card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 30px;
+  padding: 20px;
+}
+
+.card {
+  height: 250px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  background-position: center;
+  color: white;
+  position: relative;
+  margin-top: 30px;
+  box-shadow: 1px 1px 2px #e7e7e7;
+  border-radius: 4px;
+  padding: 10px;
+  a {
+    color: white;
+  }
+}
+
+.card-wraper {
+  padding: 0 30px;
+}
+
+.content {
+  display: flex;
+}
+
+.cards-container {
+  padding: 0 15px;
+  flex: auto;
+}

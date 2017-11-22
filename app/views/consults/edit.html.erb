@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="form-title">
+    <h1>Editar Consulta</h1>
+      <div class="form">
+        <%= simple_form_for( [@patient, @consult] ) do |f| %>
+        <%= f.input :place, collection: Consult.places.keys, label: 'Local', default: Consult.places.keys.first%>
+        <%= f.input :unit_cnes, label: 'CNES Unidade', input_html: { value: @consult.professional.unit_cnes }  %>
+        <%= f.input :team_number, label: 'Número da equipe', input_html: { value: @consult.professional.team_number }  %>
+        <%= f.input :consult_date, as: :date %>
+        <%= f.input :turn, collection: Consult.turns.keys, label: 'Turno'  %>
+        <%= f.button :submit, 'Salvar alterações' %>
+        <% end %>
+      </div>
+  </div>
+</div>

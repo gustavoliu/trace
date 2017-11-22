@@ -11,11 +11,11 @@ Rails.application.routes.draw do
   root to: 'users#index'
 
   resources :patients, except: [ :destroy ] do
-    resources :consults, only: [ :new, :create ]
+    resources :consults, only: [ :new, :create, :edit ]
   end
 
-   resources :consults, only: [ :index, :show ] do
-    resources :soaps, only: [ :new, :create ]
+   resources :consults, only: [ :index, :show, :edit, :update ] do
+    resources :soaps, only: [ :new, :create, :edit, :update ]
   end
 
   resources :professionals, only: [ :new, :edit, :destroy, :show, :update ]
