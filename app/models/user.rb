@@ -20,11 +20,11 @@ class User < ApplicationRecord
         )
     end
 
-    professional = user.professional
-    professional.full_name = "#{data.first_name} #{data.last_name}"
+    if user.professional.full_name.blank?
+      # DANGEROUS! The 'update_atribute' method below overrides validations.
+      user.professional.update_attribute(:full_name, "#{data.first_name} #{data.last_name}")
+    end
     # professional.google_photo = data.image
-    professional.save
-    binding.pry
     user
   end
 

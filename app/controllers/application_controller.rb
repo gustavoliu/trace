@@ -4,8 +4,9 @@ class ApplicationController < ActionController::Base
 
 
     protected
+
     def after_sign_in_path_for(resource)
-      return edit_professional_path(resource.professional) if resource.professional.present? && resource.professional.full_name.blank?
+      return edit_professional_path(resource.professional) if resource.professional.present? && !resource.professional.completed?
 
       request.env['omniauth.origin'] || stored_location_for(resource) || root_path
     end
