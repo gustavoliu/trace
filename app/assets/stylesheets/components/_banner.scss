@@ -8,7 +8,7 @@
 
 .banner {
   color: white;
-  text-align: center;
+  text-align: left;
   height: calc(100vh - 70px);
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
@@ -31,15 +31,22 @@
 }
 
 .banner_search {
-  color: gray;
-  text-align: center;
-  height: 500px;
+  color: white;
+  text-align: left;
+  height: 800px;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
 }
 
+.banner_search h1 {
+  position: absolute;
+  left: 30px;
+  top: 30px;
+}
 
-
+.banner_search h2 {
+  position: absolute;
+  left: 30px;
+  top: 100px;
+}
