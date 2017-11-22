@@ -14,5 +14,6 @@ csv.each do |row|
 end
 
 50.times do
-  Patient.create({name: Faker::Name.full_name})
+  Patient.create({full_name: Faker::Name.name,
+    sus_number: Faker::Number.number(5)})
 end
