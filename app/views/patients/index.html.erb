@@ -17,19 +17,15 @@
           <% @patients.each do |patient| %>
 
             <div class="col-xs-12 col-sm-4">
-              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('blue.jpg') %>');">
+              <div class="card">
                 <div class="card-category"><%= patient.gender %></div>
                   <div class="card-description">
                   <p><%= link_to patient.full_name, patient_path(patient), class: "card-link" %></p>
-                  <p><%= patient.sus_number %></p>
+                  <p><%= patient.consults.last.soaps.last.diagnosis %></p>
                   </div>
-
-
               </div>
             </div>
-
           <% end %>
-
       </div>
     </div>
   </div>
