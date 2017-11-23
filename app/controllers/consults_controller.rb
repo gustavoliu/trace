@@ -1,6 +1,26 @@
 class ConsultsController < ApplicationController
   before_action :set_consult, only: [:show, :edit, :update]
 
+  def new_with_soap
+    @patient = Patient.find(params[:patient_id])
+    @consult = Consult.new
+    @consult.patient = @patient
+
+    @consult.professional = current_user.professional
+    @consult.place = Consult.places.keys.first
+    @consult.unit_cnes = @consult.professional.unit_cnes
+    @consult.team_number = @consult.professional.team_number
+
+
+    if @consult.save
+      redirect_to  consult_path(@consult)
+    else
+      render :new
+    end
+
+  end
+
+
   def new
     @consult = Consult.new
     @patient = Patient.find(params[:patient_id])

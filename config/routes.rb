@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   root to: 'users#index'
 
   resources :patients, except: [ :destroy ] do
-    resources :consults, only: [ :new, :create, :edit ]
+    resources :consults, only: [ :new, :createeate, :edit ]
+    get 'new_with_soap', to: 'consults#new_with_soap'
   end
 
    resources :consults, only: [ :index, :show, :edit, :update ] do
