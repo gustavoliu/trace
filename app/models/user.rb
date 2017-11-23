@@ -14,18 +14,18 @@ class User < ApplicationRecord
 
     # Uncomment the section below if you want users to be created if they don't exist
     unless user
-        user = User.create(name: data['name'],
-           email: data['email'],
-           password: Devise.friendly_token[0,20]
-        )
+        user = User.create( email: data['email'],
+                            password: Devise.friendly_token[0,20]
+                          )
     end
 
-    if user.professional.full_name.blank?
+    professional = user.professional
+    if professional.full_name.blank?
       # DANGEROUS! The 'update_atribute' method below overrides validations.
-      user.professional.update_attribute(:full_name, "#{data.first_name} #{data.last_name}")
+      professional.update_attribute(:full_name, "#{data.first_name} #{data.last_name}")
     end
-    professional.google_photo = data.image
-    user
+    professional.update_attribute(:google_photo, data.image)
+    return user
   end
 
   private

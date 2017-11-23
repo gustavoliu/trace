@@ -2,7 +2,7 @@ module ApplicationHelper
 
    def avatar(professional, attrs = {})
     if professional.google_photo != nil && professional.photo == nil
-      cl_image_tag(professional.google_photo.path, attrs)
+      image_tag(professional.google_photo, attrs)
     elsif professional.photo != nil && professional.google_photo == nil
       cl_image_tag(professional.photo.path, attrs)
     else

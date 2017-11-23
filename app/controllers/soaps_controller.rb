@@ -1,5 +1,5 @@
 class SoapsController < ApplicationController
-   before_action :set_soap, only: [:show, :edit, :update]
+  before_action :set_soap, only: [:show, :edit, :update]
 
   def new
     @soap = Soap.new
@@ -19,11 +19,12 @@ class SoapsController < ApplicationController
   end
 
   def edit
+    @consult = @soap.consult
   end
 
   def update
   if @soap.update(soap_params)
-      redirect_to @soap
+      redirect_to patient_path(@soap.consult.patient)
     else
       render :edit
     end
@@ -37,9 +38,13 @@ class SoapsController < ApplicationController
 
   private
 
-  def set_patient
+  def set_soap
     @soap = Soap.find(params[:id])
   end
+
+  # def set_patient
+  #   @soap = Soap.find(params[:id])
+  # end
 
   def soap_params
     params.require(:soap).permit( :complaint, :diagnosis, :consult_id, referring: [], exams: [] )

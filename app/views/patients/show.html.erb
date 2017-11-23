@@ -2,7 +2,8 @@
 <div class="container">
   <div class="form-title">
     <br>
-    <h1><%= @patient.full_name %>, <%= @patient.age %> (<%= @patient.birthday.strftime("%d/%m/%Y") %>)</h1>
+    <h1><%= @patient.full_name %>, <%= @patient.age %></h1>
+      <p>Data de Nascimento: <%= @patient.birthday.strftime("%d/%m/%Y") %> </p>
       <p>Prontuário: <%= @patient.prontuario_number %></p>
       <p>Número SUS: <%= @patient.sus_number %></p>
       <p>Endereço: <%= @patient.address %></p>
@@ -13,14 +14,27 @@
   <div>
     <h4>Consultas realizadas:</h4>
     <ul>
-      <% @patient.consults.sort_by { |c| c.consult_date }.reverse.each do |consult| %>
+      <% @patient.consults.order(consult_date: :desc).each do |consult| %>
         <li>
           <div>
-            <p>Data: <%= consult.consult_date.strftime("%d/%m/%Y") %></p>
-            <p>Turno: <%= consult.turn %></p>
+            <ul class="list-inline">
+            <li>Data: <%= consult.consult_date.strftime("%d/%m/%Y") %></li>
+            <li>Turno: <%= consult.turn %></li>
             <% pro = Professional.find(consult.professional_id) %>
-            <p>Profissional: <%= pro.full_name %> (<%= pro.professional_number %>)</p>
-            <%= link_to 'Editar Consulta', edit_patient_consult_path(consult), class:'btn btn-success' %>
+            <li>Profissional: <%= pro.full_name %> (<%= pro.professional_number %>)</li>
+            <li><%= link_to 'Editar Consulta', edit_consult_path(consult), class: 'btn btn-success' %></li>
+            </ul>
+          </div>
+          <div>
+            <% consult.soaps.each do |soap| %>
+              <ul class="list-inline">
+                <li>S: <%= soap.complaint %></li>
+                <li>A: <%= soap.diagnosis %></li>
+                <li>Exames: <%= soap.exams %></li>
+                <li>Encaminhamentos: <%= soap.referring %></li>
+                <li><%= link_to 'Editar componente', edit_consult_soap_path(soap.consult, soap), class: 'btn btn-primary' %></li>
+              </ul>
+            <% end %>
           </div>
         </li>
       <% end %>
