@@ -23,7 +23,6 @@ gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
 gem 'bootstrap-datepicker-rails'
-gem 'rails-i18n'
 gem 'geocoder'
 gem "gmaps4rails"
 gem 'pg_search'
