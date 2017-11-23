@@ -16,7 +16,7 @@ s<div class="banner_search" style="background-image: linear-gradient(-225deg, rg
             <div class="col-xs-12 col-sm-4">
               <div class="card">
                 <div class="card-category"><%= patient.gender %></div>
-                  <div class="card-description">              
+                  <div class="card-description">
                   <%= link_to patient_path(patient) do %>
                   <p><%= patient.full_name %></p>
                   <p><%= patient.consults.last.soaps.last.diagnosis %></p>
