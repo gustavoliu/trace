@@ -11,22 +11,26 @@
 
       <!-- Links when logged in -->
       <%= link_to "Adicionar Paciente", new_patient_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Adicionar Médico", new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Reports", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <%= avatar current_user.professional, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to "#" do %>
+              <%= link_to patients_path do %>
+                <i class="fa fa-home"></i>  <%= t(".patients", default: "Home") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to edit_professional_path(current_user.professional) do %>
                 <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
               <% end %>
             </li>
             <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+              <%= link_to new_patient_path do %>
+                <i class="fa fa-address-book-o"></i>  <%= t(".new_patient", default: "Adicionar Paciente") %>
               <% end %>
             </li>
             <li>
@@ -44,15 +48,36 @@
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
-  <div class="navbar-wagon-item hidden-md hidden-lg">
-    <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
-      </ul>
+  <% if user_signed_in? %>
+    <div class="navbar-wagon-item hidden-md hidden-lg">
+      <div class="dropdown">
+        <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li>
+            <%= link_to patients_path do %>
+              <i class="fa fa-home"></i>  <%= t(".patients", default: "Home") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to edit_professional_path(current_user) do %>
+              <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_patient_path do %>
+              <i class="fa fa-address-book-o"></i>  <%= t(".new_patient", default: "Adicionar Paciente") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
+  <% else %>
+    <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+  <% end %>
 </div>
 
