@@ -1,5 +1,19 @@
 <h1>Nova Consulta</h1>
 
-<div class="form">
-  <%= render 'new_consult_form' %>
-</div>
+<h3>Dados Consulta</h3>
+<h4><%= @patient.full_name.capitalize %>, <%= @patient.age %></h4>
+  <p> Local: <%= @consult.place %></p>
+  <p> CNES Unidade: <%= @consult.unit_cnes %></p>
+  <p> Número da equipe: <%= @consult.team_number %></p>
+
+<%= render 'soaps/form' %>
+<br>
+<% @soaps.each do |s| %>
+  <strong><p><%= s.complaint  %></p></strong>
+  <ul>
+    <li><%= s.diagnosis %></li>
+    <li><%= s.exams.reject{|e| e.blank? }.to_sentence %></li>
+    <li><%= s.referring.reject{|e| e.blank? }.to_sentence %></li>
+  </ul>
+<% end %>
+

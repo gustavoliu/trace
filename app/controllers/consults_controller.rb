@@ -5,6 +5,10 @@ class ConsultsController < ApplicationController
     @consult = Consult.new
     @patient = Patient.find(params[:patient_id])
     @consult.professional = current_user.professional
+
+    @consult.place = Consult.places.keys.first
+    @consult.unit_cnes = @consult.professional.unit_cnes
+    @consult.team_number = @consult.professional.team_number
   end
 
   def create
