@@ -5,7 +5,7 @@
         </div>
       <p> Data: <%= @consult.consult_date %></p>
 
-      <%= render 'soaps/form' %>
+      <%= render 'soaps/form_create' %>
       <br>
       <% @soaps.each do |s| %>
       <strong><p><%= s.complaint  %></p></strong>
