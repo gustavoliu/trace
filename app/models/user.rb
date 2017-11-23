@@ -24,7 +24,7 @@ class User < ApplicationRecord
       # DANGEROUS! The 'update_atribute' method below overrides validations.
       user.professional.update_attribute(:full_name, "#{data.first_name} #{data.last_name}")
     end
-    # professional.google_photo = data.image
+    professional.google_photo = data.image
     user
   end
 
