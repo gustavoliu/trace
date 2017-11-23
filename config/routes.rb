@@ -16,9 +16,11 @@ Rails.application.routes.draw do
     resources :consults, only: [ :new, :create, :edit ]
   end
 
-   resources :consults, only: [ :index, :show, :edit, :update ] do
+  resources :consults, only: [ :index, :show, :edit, :update ] do
     resources :soaps, only: [ :new, :create, :edit, :update ]
   end
+
+  resources :soaps, only: [ :destroy ]
 
   resources :professionals, only: [ :new, :edit, :destroy, :show, :update ]
 end
