@@ -10,28 +10,21 @@ s<div class="banner_search" style="background-image: linear-gradient(-225deg, rg
     <%= submit_tag 'Buscar', class: "btn btn-primary" %>
     <% end %>
   </div>
-
       <div class="container">
         <div class="row">
-
           <% @patients.each do |patient| %>
-
             <div class="col-xs-12 col-sm-4">
-              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('blue.jpg') %>');">
+              <div class="card">
                 <div class="card-category"><%= patient.gender %></div>
-                  <div class="card-description">
+                  <div class="card-description">              
                   <%= link_to patient_path(patient) do %>
                   <p><%= patient.full_name %></p>
-                  <p><%= patient.sus_number %></p>
+                  <p><%= patient.consults.last.soaps.last.diagnosis %></p>
                   <% end %>
                   </div>
-
-
               </div>
             </div>
-
           <% end %>
-
       </div>
     </div>
   </div>
