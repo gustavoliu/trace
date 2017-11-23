@@ -10,7 +10,7 @@ class ConsultsController < ApplicationController
     @consult.place = Consult.places.keys.first
     @consult.unit_cnes = @consult.professional.unit_cnes
     @consult.team_number = @consult.professional.team_number
-
+    @consult.consult_date = Date.today
 
     if @consult.save
       redirect_to  consult_path(@consult)
@@ -26,9 +26,6 @@ class ConsultsController < ApplicationController
     @patient = Patient.find(params[:patient_id])
     @consult.professional = current_user.professional
 
-    @consult.place = Consult.places.keys.first
-    @consult.unit_cnes = @consult.professional.unit_cnes
-    @consult.team_number = @consult.professional.team_number
   end
 
   def create
