@@ -18,10 +18,10 @@
               <div class="card">
                 <div class="card-category"><%= patient.gender %></div>
                   <div class="card-description">
-                    <%= link_to patient_path(patient) do %>
+                  <%= link_to patient_path(patient) do %>
                   <p><%= patient.full_name %></p>
                   <p><%= patient.consults.last.soaps.last.diagnosis %></p>
-                  <% end %>
+                <% end %>
                 </div>
               </div>
             </div>

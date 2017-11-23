@@ -12,7 +12,11 @@
     </div>
     <div class="col-xs-12 col-sm-6 ">
       <%= f.input :referring, as: :check_boxes, collection: Soap::REFERRING_OPTIONS, label: 'Conduta' %>
-      <%= f.button :submit, 'Salvar' %>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 ">
+        <%= f.button :submit, 'Salvar', class: 'btn btn-success', id: 'submit'  %>
+      </div>
     </div>
       <% end %>
   </div>
