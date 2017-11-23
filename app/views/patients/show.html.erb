@@ -14,7 +14,7 @@
   <div>
     <h4>Consultas realizadas:</h4>
     <ul>
-      <% @patient.consults.sort_by { |c| c.consult_date }.reverse.each do |consult| %>
+      <% @patient.consults.order(consult_date: :desc).each do |consult| %>
         <li>
           <div>
             <ul class="list-inline">
@@ -22,7 +22,7 @@
             <li>Turno: <%= consult.turn %></li>
             <% pro = Professional.find(consult.professional_id) %>
             <li>Profissional: <%= pro.full_name %> (<%= pro.professional_number %>)</li>
-            <li><%= link_to 'Editar Consulta', edit_patient_consult_path(consult), class:'btn btn-success' %></li>
+            <li><%= link_to 'Editar Consulta', edit_consult_path(consult), class:'btn btn-success' %></li>
             </ul>
           </div>
           <div>
@@ -31,6 +31,8 @@
                 <li>S: <%= soap.complaint %></li>
                 <li>A: <%= soap.diagnosis %></li>
                 <li>Exames: <%= soap.exams %></li>
+                <li>Encaminhamentos: <%= soap.refering %></li>
+                <li><%= link_to 'Editar componente', edit_consult_path(consult), class:'btn btn-success' %></li>
               </ul>
             <% end %>
           </div>
