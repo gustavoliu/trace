@@ -20,6 +20,6 @@ class SoapsController < ApplicationController
   private
 
   def soap_params
-    params.require(:soap).permit( :complaint, :diagnosis, :consult_id, refering: [], exams: [] )
+    params.require(:soap).permit( :complaint, :diagnosis, :consult_id, referring: [], exams: [] )
   end
 end

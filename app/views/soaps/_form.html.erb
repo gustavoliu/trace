@@ -11,7 +11,7 @@
      <%= f.input :exams, as: :check_boxes, collection: Soap::EXAMS_OPTIONS, label: 'Exames' %>
     </div>
     <div class="col-xs-12 col-sm-6 ">
-      <%# f.input :refering, as: :check_boxes, collection: Soap.referings.keys, label: 'Conduta' %>
+      <%= f.input :referring, as: :check_boxes, collection: Soap::REFERRING_OPTIONS, label: 'Conduta' %>
       <%= f.button :submit, 'Salvar' %>
     </div>
       <% end %>

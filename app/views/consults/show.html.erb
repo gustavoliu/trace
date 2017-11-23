@@ -12,7 +12,7 @@
       <ul>
         <li><%= s.diagnosis %></li>
         <li><%= s.exams.reject{|e| e.blank? }.to_sentence %></li>
-        <li><%# s.refering %></li>
+        <li><%= s.referring.reject{|e| e.blank? }.to_sentence %></li>
       </ul>
       <% end %>
   </div>

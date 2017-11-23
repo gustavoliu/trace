@@ -2,6 +2,7 @@ class Soap < ApplicationRecord
   belongs_to :consult
 
   EXAMS_OPTIONS = [ 'Creatinina', 'EAS', 'ECG', 'Eletroforese Hb', 'Escarro', 'Espirometria', 'Hemograma', 'Hemoglobina Glicada', 'Glicemia' ]
+  REFERRING_OPTIONS = [ 'Retorno', 'Encaminhamento Grupo', 'Encaminhamento especialidade', 'NASF', 'Urgência' ]
 
   serialize :exams, Array
   serialize :referring, Array
