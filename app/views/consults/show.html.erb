@@ -6,8 +6,9 @@
 
   <p> Data: <%= @consult.consult_date %></p>
   <p>
-    <strong>Local:</strong> <%= @consult.place %> /<strong>CNES Unidade: </strong><%= @consult.unit_cnes %> /<strong>Número da equipe: </strong> <%= @consult.team_number %>
+    <strong>Local:</strong> <%= @consult.place %> / <strong>CNES Unidade: </strong><%= @consult.unit_cnes %> / <strong>Número da equipe: </strong> <%= @consult.team_number %> / <strong>Turno:</strong> <%= @consult.turn %>    <%= link_to 'Editar',  edit_consult_path(@consult), class:'btn btn-primary' %>
   </p>
+  <br>
 
   <%= render 'soaps/form' %>
   <br>

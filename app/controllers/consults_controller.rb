@@ -12,6 +12,15 @@ class ConsultsController < ApplicationController
     @consult.team_number = @consult.professional.team_number
     @consult.consult_date = Date.today
 
+    hour_now = Time.now.hour
+    if hour_now > 6 && hour_now < 12
+      @consult.turn = Consult.turns.keys[0]
+      elsif hour_now >= 12 && hour_now < 18
+      @consult.turn = Consult.turns.keys[1]
+      else
+      @consult.turn = Consult.turns.keys[2]
+    end
+
     if @consult.save
       redirect_to  consult_path(@consult)
     else
