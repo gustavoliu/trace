@@ -37,8 +37,6 @@ ActiveRecord::Schema.define(version: 20171121182309) do
     t.string "team_number"
     t.integer "professional_id"
     t.integer "patient_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "place"
     t.integer "turn"
   end
