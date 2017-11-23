@@ -1,7 +1,24 @@
-<%= simple_form_for( [@consult, @soap] ) do |f| %>
-  <%= f.input :complaint, label: 'Queixa' %>
-  <%= f.input :diagnosis, label: 'Diagnóstico' %>
-  <%= f.input :exams, collection: Soap.exams.keys, label: 'Exames' %>
-  <%= f.input :refering, collection: Soap.referings.keys, label: 'Conduta' %>
-  <%= f.button :submit, 'Salvar' %>
-<% end %>
+<div class="container">
+  <%= simple_form_for( [@consult, @soap] ) do |f| %>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 ">
+     <%= f.input :complaint, label: 'Queixa' %>
+   </div>
+   <div class="col-xs-12 col-sm-6 ">
+     <%= f.input :diagnosis, label: 'Diagnóstico' %>
+   </div>
+   <div class="col-xs-12 col-sm-6 ">
+     <%= f.input :exams, as: :check_boxes, collection: Soap.exams.keys, label: 'Exames' %>
+    </div>
+    <div class="col-xs-12 col-sm-6 ">
+      <%= f.input :refering, as: :check_boxes, collection: Soap.referings.keys, label: 'Conduta' %>
+      <%= f.button :submit, 'Salvar' %>
+    </div>
+      <% end %>
+  </div>
+</div>
+
+
+
+
+
