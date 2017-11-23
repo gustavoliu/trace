@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: 'patients#index'
+
   get 'soaps/new'
 
   get 'soaps/create'
