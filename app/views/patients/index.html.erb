@@ -13,14 +13,15 @@
     </div>
     <div class="container">
       <div class="row">
-
           <% @patients.each do |patient| %>
             <div class="col-xs-12 col-sm-4">
               <div class="card">
                 <div class="card-category"><%= patient.gender %></div>
                   <div class="card-description">
-                  <p><%= link_to patient.full_name, patient_path(patient), class: "card-link" %></p>
+                    <%= link_to patient_path(patient) do %>
+                  <p><%= patient.full_name %></p>
                   <p><%= patient.consults.last.soaps.last.diagnosis %></p>
+                  <% end %>
                 </div>
               </div>
             </div>
