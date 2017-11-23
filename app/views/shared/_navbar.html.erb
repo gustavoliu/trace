@@ -11,7 +11,6 @@
 
       <!-- Links when logged in -->
       <%= link_to "Adicionar Paciente", new_patient_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Adicionar Médico", new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Reports", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
@@ -20,13 +19,18 @@
           <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to "#" do %>
+              <%= link_to patients_path do %>
+                <i class="fa fa-home"></i>  <%= t(".patients", default: "Home") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to edit_professional_path(current_user.professional) do %>
                 <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
               <% end %>
             </li>
             <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+              <%= link_to new_patient_path do %>
+                <i class="fa fa-address-book-o"></i>  <%= t(".new_patient", default: "Adicionar Paciente") %>
               <% end %>
             </li>
             <li>
