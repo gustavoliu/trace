@@ -2,9 +2,9 @@
   <%= f.input :place, collection: Consult.places.keys, label: 'Local', default: Consult.places.keys.first%>
   <%= f.input :unit_cnes, label: 'CNES Unidade', input_html: { value: @consult.professional.unit_cnes }  %>
   <%= f.input :team_number, label: 'Número da equipe', input_html: { value: @consult.professional.team_number }  %>
-  <%= f.input :consult_date, as: :date %>
+  <%= f.input :consult_date, label: 'Data da Consulta', as: :date %>
   <%= f.input :turn, collection: Consult.turns.keys, label: 'Turno'  %>
-  <%= f.button :submit, 'Salvar' %>
+  <%= f.submit 'Salvar', class: 'btn btn-primary' %>
 <% end %>
 
 
