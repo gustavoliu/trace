@@ -14,7 +14,9 @@ class SoapsController < ApplicationController
     if @soap.save
       redirect_to consult_path(@consult)
     else
-      render :new
+      @soaps = @consult.soaps
+      @patient = @consult.patient
+      render template: 'consults/show'
     end
   end
 
