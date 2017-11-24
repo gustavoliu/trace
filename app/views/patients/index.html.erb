@@ -13,20 +13,17 @@
     </div>
     <div class="container">
       <div class="row">
-          <% @patients.each do |patient| %>
-
-            <div class="col-xs-12 col-sm-4">
-              <div class="card" style="background-color: #DFEAE6; padding: 10px; box-shadow: 0 1px 2px; color: gray">
-                <div class="card-category"><%= patient.gender %></div>
-                  <div class="card-description">
-                  <p><%= link_to patient.full_name, patient_path(patient), class: "card-link" %></p>
-                  <p><%= patient.sus_number %></p>
-
-                  </div>
-                </div>
+        <% @patients.each do |patient| %>
+          <div class="col-xs-12 col-sm-4">
+            <div class="card" style="background-color: #DFEAE6; padding: 10px; box-shadow: 0 1px 2px; color: gray">
+              <div class="card-category"><%= patient.gender %></div>
+              <div class="card-description">
+                <p><%= link_to patient.full_name, patient_path(patient), class: "card-link" %></p>
+                <p><%= patient.sus_number %></p>
               </div>
-            <% end %>
-          <% end %>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
