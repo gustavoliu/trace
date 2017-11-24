@@ -56,15 +56,16 @@
 }
 
 .card-show {
-  border: solid;
+  border: 1px solid gray;
   margin: 5px;
   padding: 0 5px;
+  border-radius: 5px;
 
 }
 
 .card-header {
   background:#133366;
-  border-bottom: solid;
+  border-bottom: 1px solid;
   margin: 0 -5px;
 }
 
