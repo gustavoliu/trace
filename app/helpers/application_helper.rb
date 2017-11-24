@@ -10,4 +10,8 @@ module ApplicationHelper
     end
   end
 
+  def date_format(date)
+    date.strftime("%d/%m/%Y")
+  end
+
 end
