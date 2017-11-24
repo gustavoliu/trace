@@ -8,14 +8,14 @@
      <%= f.input :diagnosis, label: 'Diagnóstico' %>
    </div>
    <div class="col-xs-12 col-sm-6 ">
-     <%= f.input :exams, as: :check_boxes, collection: Soap::EXAMS_OPTIONS, label: 'Exames' %>
+     <%= f.input :exams, as: :check_boxes, collection: Soap::EXAMS_OPTIONS, label: 'Exames', include_hidden: false %>
     </div>
     <div class="col-xs-12 col-sm-6 ">
-      <%= f.input :referring, as: :check_boxes, collection: Soap::REFERRING_OPTIONS, label: 'Conduta' %>
+      <%= f.input :referring, as: :check_boxes, collection: Soap::REFERRING_OPTIONS, label: 'Conduta', include_hidden: false %>
     </div>
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-sm-offset-3 ">
-        <%= f.button :submit, 'Salvar', class: 'btn btn-success', id: 'submit'  %>
+        <%= f.button :submit, 'Salvar', class: 'btn btn-success', id: 'large_btn'  %>
       </div>
     </div>
       <% end %>

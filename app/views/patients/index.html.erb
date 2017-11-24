@@ -20,7 +20,8 @@
                   <div class="card-description">
                   <%= link_to patient_path(patient) do %>
                   <p><%= patient.full_name %></p>
-                  <p><%= patient.age %></p>
+                  <% unless patient.consults.last.soaps.empty? %>
+                  <p><%= patient.age %></p>                  
                   <% end %>
                 </div>
               </div>
