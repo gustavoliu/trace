@@ -1,8 +1,10 @@
 <div class="container">
   <div class="form-title">
-    <br>
-    <h3>
-      <%= @patient.full_name.capitalize %>, <%= @patient.age %>
+  <br>
+   <h3>
+      <%= link_to patient_path(@patient) do %>
+        <%= @patient.full_name.capitalize %>, <%= @patient.age %>
+      <% end %>
       <%= link_to edit_patient_path(@patient), class:'edit_link' do %>
         <i class="fa fa-pencil" aria-hidden="true"></i>
       <% end %>
