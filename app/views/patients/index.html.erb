@@ -1,4 +1,4 @@
-<div class="banner_search" style="background-image: linear-gradient(-225deg, rgba(150,168,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path('blue.jpg') %>');">
+<div class="banner_search">
   <h1 align="left"> Input data once </h1>
   <h2 align="left"> Know the stats of people under your care </h2>
 
@@ -17,7 +17,7 @@
           <% @patients.each do |patient| %>
 
             <div class="col-xs-12 col-sm-4">
-              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('blue.jpg') %>');">
+              <div class="card" style="background-color: #DFEAE6; padding: 10px; box-shadow: 0 1px 2px; color: gray">
                 <div class="card-category"><%= patient.gender %></div>
                   <div class="card-description">
                   <p><%= link_to patient.full_name, patient_path(patient), class: "card-link" %></p>
@@ -34,3 +34,6 @@
     </div>
   </div>
 </div>
+
+
+
