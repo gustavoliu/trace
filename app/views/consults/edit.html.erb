@@ -1,14 +1,14 @@
 <div class="container">
   <div class="form-title">
     <h1>Editar Consulta</h1>
-      <div class="form">
+      <div class="form-register-wrapper">
         <%= simple_form_for( [@patient, @consult] ) do |f| %>
         <%= f.input :place, collection: Consult.places.keys, label: 'Local', default: Consult.places.keys.first%>
         <%= f.input :unit_cnes, label: 'CNES Unidade' %>
         <%= f.input :team_number, label: 'Número da equipe' %>
         <%= f.input :consult_date, as: :date %>
         <%= f.input :turn, collection: Consult.turns.keys, label: 'Turno'  %>
-        <%= f.button :submit, 'Salvar alterações' %>
+        <%= f.submit 'Salvar alterações', class: 'btn btn-primary' %>
         <% end %>
       </div>
   </div>
