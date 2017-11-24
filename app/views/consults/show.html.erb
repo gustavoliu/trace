@@ -22,14 +22,16 @@
 
   <%= render 'soaps/form' %>
   <br>
-  <% @soaps.each do |s| %>
-    <strong><p><%= s.complaint  %></p></strong>
-    <ul>
-      <li><%= s.diagnosis %></li>
-      <li><%= s.exams.reject{|e| e.blank? }.to_sentence %></li>
-      <li><%= s.referring.reject{|e| e.blank? }.to_sentence %></li>
-    </ul>
-  <% end %>
+  <div class="row">
+    <% @soaps.each do |s| %>
+      <div class="card-soap col-sm-4">
+          <p>CIAP - S: <%= s.complaint %></p>
+          <p>CIAP - A: <%= s.diagnosis %></p>
+          <p>Ex: <%= stringify(s.exams) %></p>
+          <p>CD: <%= stringify(s.referring) %></p>
+      </div>
+    <% end %>
+  </div>
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 ">
       <% if @consult.soaps.count > 0 %>

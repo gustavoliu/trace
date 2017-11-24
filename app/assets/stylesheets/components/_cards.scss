@@ -59,7 +59,18 @@
   margin: 5px;
   padding: 0 5px;
   border-radius: 5px;
+}
 
+.card-soap {
+  border: solid 1px;
+  border-radius: 4px;
+  margin: 10px 10px 30px;
+  padding: 10px 15px;
+  box-shadow: 1px 2px 2px #e7e7e7;
+
+  p {
+    margin: 0 0 5px;
+  }
 }
 
 .card-header {
