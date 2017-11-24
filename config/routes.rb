@@ -13,9 +13,11 @@ Rails.application.routes.draw do
   root to: 'users#index'
 
   resources :patients, except: [ :destroy ] do
-    resources :consults, only: [ :new, :createeate, :edit ]
+    resources :consults, only: [ :new, :create, :edit ]
     get 'new_with_soap', to: 'consults#new_with_soap'
   end
+
+  get 'list_consults_by_date', to: 'consults#list_consults_by_date'
 
   resources :consults, only: [ :index, :show, :edit, :update ] do
     resources :soaps, only: [ :new, :create, :edit, :update ]

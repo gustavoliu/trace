@@ -1,0 +1,38 @@
+Lista de pacientes por data (default: dia de hoje)
+
+<div class="container">
+  <h4>Data: <%= @date %></h4>
+  <div class="row">
+    <% @consults.each do |c| %>
+      <div class="col-xs-12">
+        <div>
+          <% p = c.patient %>
+          <%= p.full_name %> -- <% p.gender %> -- DN: <%= p.birthday.strftime("%d/%m/%Y") %> -- SUS: <%= p.sus_number %> -- Prontuário: <%= p.prontuario_number %>
+          <br>
+          Local: <%= c.place %> -- Turno: <%= c.turn %> -- CNES Unidade: <%= c.unit_cnes %> -- Equipe: <%= c.team_number %>
+          <br>
+            <% complaints = [] %>
+            <% diagnoses = [] %>
+            <% exams = [] %>
+            <% referring = [] %>
+            <% c.soaps.each do |soap| %>
+              <% exams.push(soap.exams) %>
+              <% referring.push(soap.referring) %>
+              <%= exams %>
+            <% end %>
+          <br> ==
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+ create_table "soaps", force: :cascade do |t|
+    t.string "complaint"
+    t.string "diagnosis"
+    t.string "consult_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "exams"
+    t.text "referring"
+  end
