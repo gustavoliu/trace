@@ -14,4 +14,7 @@ module ApplicationHelper
     date.strftime("%d/%m/%Y")
   end
 
+  def stringify(array)
+    array.flatten.reject { |c| c.empty? }.uniq.join(", ")
+  end
 end
