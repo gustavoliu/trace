@@ -2,14 +2,18 @@
 <div class="container">
   <div class="form-title">
     <br>
-    <h1><%= @patient.full_name %>, <%= @patient.age %></h1>
-      <p>Data de Nascimento: <%= @patient.birthday.strftime("%d/%m/%Y") %> </p>
-      <p>Prontuário: <%= @patient.prontuario_number %></p>
-      <p>Número SUS: <%= @patient.sus_number %></p>
-      <p>Endereço: <%= @patient.address %></p>
-      <br>
-      <%= link_to 'Nova Consulta', patient_new_with_soap_path(@patient), class:'btn btn-success' %>
-      <%= link_to 'Editar Dados', edit_patient_path(@patient), class:'btn btn-success' %>
+    <h1>
+      <%= @patient.full_name %>, <%= @patient.age %>
+      <%= link_to edit_patient_path(@patient), class:'edit_link' do %>
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+       <% end %>
+    </h1>
+    <p>Data de Nascimento: <%= @patient.birthday.strftime("%d/%m/%Y") %> </p>
+    <p>Prontuário: <%= @patient.prontuario_number %></p>
+    <p>Número SUS: <%= @patient.sus_number %></p>
+    <p>Endereço: <%= @patient.address %></p>
+    <br>
+    <%= link_to 'Nova Consulta', patient_new_with_soap_path(@patient), class:'btn btn-success' %>
   </div>
 </div>
 
