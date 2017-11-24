@@ -1,10 +1,40 @@
 class ConsultsController < ApplicationController
   before_action :set_consult, only: [:show, :edit, :update]
 
+  def new_with_soap
+    @patient = Patient.find(params[:patient_id])
+    @consult = Consult.new
+    @consult.patient = @patient
+
+    @consult.professional = current_user.professional
+    @consult.place = Consult.places.keys.first
+    @consult.unit_cnes = @consult.professional.unit_cnes
+    @consult.team_number = @consult.professional.team_number
+    @consult.consult_date = Date.today
+
+    hour_now = Time.now.hour
+    if hour_now > 6 && hour_now < 12
+      @consult.turn = Consult.turns.keys[0]
+      elsif hour_now >= 12 && hour_now < 18
+      @consult.turn = Consult.turns.keys[1]
+      else
+      @consult.turn = Consult.turns.keys[2]
+    end
+
+    if @consult.save
+      redirect_to  consult_path(@consult)
+    else
+      render :new
+    end
+
+  end
+
+
   def new
     @consult = Consult.new
     @patient = Patient.find(params[:patient_id])
     @consult.professional = current_user.professional
+
   end
 
   def create

@@ -1,19 +1,31 @@
 <div class="container">
   <div class="form-title">
     <br>
-      <h3><%= @patient.full_name.capitalize %>, <%= @patient.age %></h3>
-        </div>
-      <p> Data: <%= @consult.consult_date %></p>
+    <h3><%= @patient.full_name.capitalize %>, <%= @patient.age %></h3>
+  </div>
 
-      <%= render 'soaps/form' %>
-      <br>
-      <% @soaps.each do |s| %>
-      <strong><p><%= s.complaint  %></p></strong>
-      <ul>
-        <li><%= s.diagnosis %></li>
-        <li><%= s.exams %></li>
-        <li><%= s.refering %></li>
-      </ul>
+  <p> Data: <%= date_format(@consult.consult_date) %></p>
+  <p>
+    <strong>Local:</strong> <%= @consult.place %> / <strong>CNES Unidade: </strong><%= @consult.unit_cnes %> / <strong>Número da equipe: </strong> <%= @consult.team_number %> / <strong>Turno:</strong> <%= @consult.turn %>    <%= link_to 'Editar',  edit_consult_path(@consult), class:'btn btn-primary' %>
+  </p>
+  <br>
+
+  <%= render 'soaps/form' %>
+  <br>
+  <% @soaps.each do |s| %>
+    <strong><p><%= s.complaint  %></p></strong>
+    <ul>
+      <li><%= s.diagnosis %></li>
+      <li><%= s.exams.reject{|e| e.blank? }.to_sentence %></li>
+      <li><%= s.referring.reject{|e| e.blank? }.to_sentence %></li>
+    </ul>
+  <% end %>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3 ">
+      <% if @consult.soaps.count > 0 %>
+        <%= link_to 'Encerrar', root_path, class:'btn btn-danger', id: 'large_btn' %>
       <% end %>
-     </div>
+    </div>
+  </div>
 </div>
+

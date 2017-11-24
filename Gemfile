@@ -25,6 +25,9 @@ gem 'coffee-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'geocoder'
 gem "gmaps4rails"
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
 gem 'pg_search'
 
 group :development do

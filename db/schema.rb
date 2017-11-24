@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(version: 20171123165022) do
     t.string "consult_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "exams"
-    t.integer "refering"
+    t.text "exams"
+    t.text "referring"
   end
 
   create_table "users", force: :cascade do |t|
