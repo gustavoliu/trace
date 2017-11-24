@@ -1,14 +1,14 @@
 <div class="container">
-  <h3>Ficha de produção</h3>
+  <h2>Ficha de produção</h2>
   <h4>Data: <%= date_format(@date) %></h4>
   <div class="row">
     <% @consults.each do |c| %>
       <div class="col-xs-12">
-        <div>
+        <div class="card-daily-report">
           <% p = c.patient %>
-          <%= p.full_name %> -- <% p.gender %> -- DN: <%= date_format(p.birthday) %> -- SUS: <%= p.sus_number %> -- Prontuário: <%= p.prontuario_number %>
+          <%= p.full_name %>, <% p.gender %>, <strong>Nascimento:</strong> <%= date_format(p.birthday) %> -- <strong>SUS: </strong><%= p.sus_number %> -- <strong>Prontuário:</strong> <%= p.prontuario_number %>
           <br>
-          Local: <%= c.place %> -- Turno: <%= c.turn %> -- CNES Unidade: <%= c.unit_cnes %> -- Equipe: <%= c.team_number %>
+          <strong>Local:</strong> <%= c.place %> -- <strong>Turno:</strong> <%= c.turn %> -- <strong>CNES Unidade:</strong> <%= c.unit_cnes %> -- <strong>Equipe:</strong> <%= c.team_number %>
           <br>
             <% complaints = [] %>
             <% diagnoses = [] %>
@@ -20,14 +20,14 @@
               <% exams.push(soap.exams) %>
               <% referring.push(soap.referring) %>
             <% end %>
-          CIAP - S: <%= stringify(complaints) %>
+          <strong>CIAP - S:</strong> <%= stringify(complaints) %>
           <br>
-          CIAP - A: <%= stringify(diagnoses) %>
+          <strong>CIAP - A:</strong> <%= stringify(diagnoses) %>
           <br>
-          Exames solicitados: <%= stringify(exams) %>
+          <strong>Exames solicitados:</strong> <%= stringify(exams) %>
           <br>
-          Encaminhamentos: <%= stringify(referring) %>
-          <br> ==
+          <strong>Encaminhamentos:</strong> <%= stringify(referring) %>
+          <br>
         </div>
       </div>
     <% end %>
