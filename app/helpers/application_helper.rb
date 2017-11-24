@@ -10,4 +10,11 @@ module ApplicationHelper
     end
   end
 
+  def date_format(date)
+    date.strftime("%d/%m/%Y")
+  end
+
+  def stringify(array)
+    array.flatten.reject { |c| c.empty? }.uniq.join(", ")
+  end
 end

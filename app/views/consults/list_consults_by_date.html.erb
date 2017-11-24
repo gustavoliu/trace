@@ -1,0 +1,35 @@
+<div class="container">
+  <h3>Ficha de produção</h3>
+  <h4>Data: <%= date_format(@date) %></h4>
+  <div class="row">
+    <% @consults.each do |c| %>
+      <div class="col-xs-12">
+        <div>
+          <% p = c.patient %>
+          <%= p.full_name %> -- <% p.gender %> -- DN: <%= date_format(p.birthday) %> -- SUS: <%= p.sus_number %> -- Prontuário: <%= p.prontuario_number %>
+          <br>
+          Local: <%= c.place %> -- Turno: <%= c.turn %> -- CNES Unidade: <%= c.unit_cnes %> -- Equipe: <%= c.team_number %>
+          <br>
+            <% complaints = [] %>
+            <% diagnoses = [] %>
+            <% exams = [] %>
+            <% referring = [] %>
+            <% c.soaps.each do |soap| %>
+              <% complaints.push(soap.complaint) %>
+              <% diagnoses.push(soap.diagnosis) %>
+              <% exams.push(soap.exams) %>
+              <% referring.push(soap.referring) %>
+            <% end %>
+          CIAP - S: <%= stringify(complaints) %>
+          <br>
+          CIAP - A: <%= stringify(diagnoses) %>
+          <br>
+          Exames solicitados: <%= stringify(exams) %>
+          <br>
+          Encaminhamentos: <%= stringify(referring) %>
+          <br> ==
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

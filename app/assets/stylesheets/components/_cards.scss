@@ -14,11 +14,15 @@
   background-size: cover !important;
   background-position: center;
   color: gray;
+
   position: relative;
   margin-top: 30px;
   box-shadow: 1px 1px 2px #e7e7e7;
   border-radius: 4px;
-  padding: 10px;
+  padding: 5px;
+  color: white;
+
+
   a {
     color: gray;
   }
@@ -33,11 +37,44 @@
 }
 
 .cards-container {
-  padding: 0 15px;
+  padding: 4px 15px;
   flex: auto;
 }
 
 .card-description {
   padding: 5px;
-  height: 60pk;
+  height: 60px;
+  color: white;
+}
+
+
+.card:hover {
+  opacity: 0.3;
+}
+
+.card-show {
+  border: solid;
+  margin: 5px;
+  padding: 0 5px;
+
+}
+
+.card-header {
+  background:#133366;
+  border-bottom: solid;
+  margin: 0 -5px;
+}
+
+
+.card-list {
+
+}
+
+.card-body {
+  padding-left: 5px;
+
+}
+
+.list-group {
+  list-style-type: none;
 }

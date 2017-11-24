@@ -1,35 +1,29 @@
 <div class="banner_search">
   <h1 align="left"> Input data once </h1>
   <h2 align="left"> Know the stats of people under your care </h2>
-
-
- <div class="container">
-   <div class="form_patient">
-    <%= form_tag patients_path, method: :get do %>
-    <%= text_field_tag 'term', params[:term], placeholder: " Nome do paciente ou número do SUS ..", class: "search_box" %>
-    <%= submit_tag 'Buscar', class: "btn btn-primary" %>
-    <% end %>
-  </div>
-
-      <div class="container">
-        <div class="row">
-
-          <% @patients.each do |patient| %>
-
-            <div class="col-xs-12 col-sm-4">
-              <div class="card" style="background-color: #DFEAE6; padding: 10px; box-shadow: 0 1px 2px; color: gray">
-                <div class="card-category"><%= patient.gender %></div>
-                  <div class="card-description">
-                  <p><%= link_to patient.full_name, patient_path(patient), class: "card-link" %></p>
-                  <p><%= patient.sus_number %></p>
-                  </div>
-
-
+  <div class="container">
+    <div class="form_patient">
+      <%= form_tag patients_path, method: :get do %>
+        <div class="search-patient">
+          <%= text_field_tag 'term', params[:term], placeholder: " Nome do paciente ou Número SUS", class: "search_box"%>
+          <i class="fa fa-search" aria-hidden="true"></i>
+          <%= submit_tag 'Buscar', class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="container">
+      <div class="row">
+        <% @patients.each do |patient| %>
+          <div class="col-xs-12 col-sm-4">
+            <div class="card" style="background-color: #DFEAE6; padding: 10px; box-shadow: 0 1px 2px; color: gray">
+              <div class="card-category"><%= patient.gender %></div>
+              <div class="card-description">
+                <p><%= link_to patient.full_name, patient_path(patient), class: "card-link" %></p>
+                <p><%= patient.sus_number %></p>
               </div>
             </div>
-
-          <% end %>
-
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
