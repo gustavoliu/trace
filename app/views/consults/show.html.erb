@@ -1,7 +1,9 @@
 <div class="container">
   <div class="form-title">
     <br>
-    <h3><%= @patient.full_name.capitalize %>, <%= @patient.age %></h3>
+    <%= link_to patient_path(@patient) do %>
+      <h3><%= @patient.full_name.capitalize %>, <%= @patient.age %></h3>
+    <% end %>
   </div>
 
   <p> Data: <%= date_format(@consult.consult_date) %></p>
