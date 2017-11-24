@@ -1,19 +1,19 @@
 <div class="container">
-  <div class="form-title">
-    <h3>Atualizar cadastro do paciente</h3>
-  </div>
   <div class="form-register-wrapper">
-        <%= simple_form_for @patient do |f| %>
-          <%= f.input :full_name, label: 'Nome Completo' %>
-          <%= f.input :birthday, as: :date, start_year: Date.today.year - 90,
-                                        end_year: Date.today.year,
-                                        order: [:day, :month, :year],
-                                        label: 'Data de Nascimento' %>
-          <%= f.input :gender, collection: Patient.genders.keys, label: 'Gênero' %>
-          <%=  f.input :sus_number, label: 'Número cartão SUS' %>
-          <%= f.input :address, label: 'Endereço' %>
-          <%= f.submit "Salvar alterações", class: 'btn btn-primary' %>
-        <% end %>
+    <div class="form-title">
+      <h3>Atualizar cadastro do paciente</h3>
+    </div>
+    <%= simple_form_for @patient do |f| %>
+      <%= f.input :full_name, label: 'Nome Completo' %>
+      <%= f.input :birthday, as: :date, start_year: Date.today.year - 90,
+                                    end_year: Date.today.year,
+                                    order: [:day, :month, :year],
+                                    label: 'Data de Nascimento' %>
+      <%= f.input :gender, collection: Patient.genders.keys, label: 'Gênero' %>
+      <%=  f.input :sus_number, label: 'Número cartão SUS' %>
+      <%= f.input :address, label: 'Endereço' %>
+      <%= f.submit "Salvar alterações", class: 'btn btn-primary' %>
+    <% end %>
   </div>
 </div>
 

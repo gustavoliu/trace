@@ -9,15 +9,14 @@
 }
 
 .card {
-  height: 250px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  height: 140px;
+  width: 250px;
   background-size: cover !important;
   background-position: center;
   color: gray;
-
   position: relative;
   margin-top: 30px;
-  box-shadow: 1px 1px 2px #e7e7e7;
+  box-shadow: 0px 0px 1px #e7e7e7;
   border-radius: 4px;
   padding: 5px;
   color: white;
@@ -41,10 +40,13 @@
   flex: auto;
 }
 
+.card-category {
+  font-weight: bold
+}
+
 .card-description {
   padding: 5px;
   height: 60px;
-  color: white;
 }
 
 
@@ -53,9 +55,10 @@
 }
 
 .card-show {
-  border: solid;
+  border: 1px solid gray;
   margin: 5px;
-  padding: 10 15px;
+  padding: 0 5px;
+  border-radius: 5px;
 }
 
 .card-soap {
@@ -72,7 +75,7 @@
 
 .card-header {
   background:#133366;
-  border-bottom: solid;
+  border-bottom: 1px solid;
   margin: 0 -5px;
 }
 
