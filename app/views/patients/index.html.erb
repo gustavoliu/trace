@@ -17,8 +17,9 @@
             <div class="col-xs-12 col-sm-4">
               <div class="card">
                 <div class="card-category"></div>
+                  <%= link_to patient_new_with_soap_path(patient) do %>
                   <div class="card-description">
-                  <%= link_to patient_path(patient) do %>
+
                   <p><%= patient.full_name %></p>
                   <% unless patient.consults.last.soaps.empty? %>
                   <p><%= patient.age %></p>
