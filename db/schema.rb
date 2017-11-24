@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171123165022) do
+ActiveRecord::Schema.define(version: 20171124154449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,11 +53,11 @@ ActiveRecord::Schema.define(version: 20171123165022) do
     t.string "full_name"
     t.date "birthday"
     t.string "sus_number"
-    t.string "gender"
     t.string "address"
     t.string "prontuario_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "gender"
   end
 
   create_table "professionals", force: :cascade do |t|
@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(version: 20171123165022) do
     t.string "consult_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "exams"
-    t.integer "refering"
+    t.text "exams"
+    t.text "referring"
   end
 
   create_table "users", force: :cascade do |t|
