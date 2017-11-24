@@ -18,15 +18,15 @@
               <div class="card">
                 <div class="card-category"></div>
                   <div class="card-description">
-                  <%= link_to patient_path(patient) do %>
-                  <p><%= patient.full_name %></p>
-                  <% unless patient.consults.last.soaps.empty? %>
-                  <p><%= patient.age %></p>
-                  <% end %>
-                </div>
+                    <%= link_to patient_path(patient) do %>
+                      <p><%= patient.full_name %></p>
+                      <% unless patient.consults.last.soaps.empty? %>
+                        <p><%= patient.age %></p>
+                      <% end %>
+                    <% end %>
+                  </div>
               </div>
             </div>
-          <% end %>
           <% end %>
       </div>
     </div>
