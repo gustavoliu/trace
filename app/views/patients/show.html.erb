@@ -38,8 +38,8 @@
                 <% consult.soaps.each do |soap| %>
                   <li><strong>S</strong>: <%= soap.complaint %></li>
                   <li><strong>A</strong>: <%= soap.diagnosis %></li>
-                  <li><strong>Ex</strong>: <%= soap.exams %></li>
-                  <li><strong>CD</strong>: <%= soap.referring %></li>
+                  <li><strong>Ex</strong>: <%= stringify(soap.exams) %></li>
+                  <li><strong>CD</strong>: <%= stringify(soap.referring) %></li>
                   <br>
                   <a><%= link_to 'Editar SOAP', edit_consult_soap_path(soap.consult, soap), class: 'btn btn-success' %></a>
                 <% end %>
