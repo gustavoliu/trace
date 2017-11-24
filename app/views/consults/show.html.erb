@@ -23,12 +23,14 @@
   <%= render 'soaps/form' %>
   <br>
   <% @soaps.each do |s| %>
+    <div class="card-show">
     <strong><p><%= s.complaint  %></p></strong>
     <ul>
       <li><%= s.diagnosis %></li>
       <li><%= s.exams.reject{|e| e.blank? }.to_sentence %></li>
       <li><%= s.referring.reject{|e| e.blank? }.to_sentence %></li>
     </ul>
+    </div>
   <% end %>
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 ">
