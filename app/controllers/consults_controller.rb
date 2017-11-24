@@ -59,6 +59,11 @@ class ConsultsController < ApplicationController
   def edit
   end
 
+  def list_consults_by_date
+    @date = Date.today
+    @consults = Consult.where("consult_date = ?", @date)
+  end
+
   def update
   if @consult.update(consult_params)
       redirect_to @consult
