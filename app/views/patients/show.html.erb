@@ -11,33 +11,45 @@
       <%= link_to 'Nova Consulta', patient_new_with_soap_path(@patient), class:'btn btn-success' %>
       <%= link_to 'Editar Dados', edit_patient_path(@patient), class:'btn btn-success' %>
   </div>
-  <div>
-    <h4>Consultas realizadas:</h4>
-    <ul>
-      <% @patient.consults.order(consult_date: :desc).each do |consult| %>
-        <li>
-          <div>
-            <ul class="list-inline">
-            <li>Data: <%= consult.consult_date.strftime("%d/%m/%Y") %></li>
-            <li>Turno: <%= consult.turn %></li>
-            <% pro = Professional.find(consult.professional_id) %>
-            <li>Profissional: <%= pro.full_name %> (<%= pro.professional_number %>)</li>
-            <li><%= link_to 'Editar Consulta', edit_consult_path(consult), class: 'btn btn-success' %></li>
+</div>
+
+<div class="container">
+  <h2>Consultas realizadas:</h2>
+  <div class="row">
+    <% @patient.consults.order(consult_date: :desc).each do |consult| %>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="card-show">
+          <div class="card-header">
+            <br>
+          </div>
+          <h4>Data: <%= consult.consult_date.strftime('%d/%m/%Y')%></h4>
+
+          <div class="card-body">
+            <ul class="list-group">
+              <li>
+                Turno: <%= consult.turn %>
+              </li>
+              <% pro = Professional.find(consult.professional_id) %>
+              <li>
+                Profissional: <%= pro.full_name %> (<%= pro.professional_number %>)
+              </li>
+              <br>
+              <% consult.soaps.each do |soap| %>
+                <li><strong>S</strong>: <%= soap.complaint %></li>
+                <li><strong>A</strong>: <%= soap.diagnosis %></li>
+                <li><strong>Ex</strong>: <%= soap.exams %></li>
+                <li><strong>CD</strong>: <%= soap.referring %></li>
+                <br>
+                <a><%= link_to 'Editar SOAP', edit_consult_soap_path(soap.consult, soap), class: 'btn btn-success' %></a>
+              <% end %>
+              <a><%= link_to 'Editar Consulta', edit_consult_path(consult), class: 'btn btn-success' %></a>
+              <br>
             </ul>
           </div>
-          <div>
-            <% consult.soaps.each do |soap| %>
-              <ul class="list-inline">
-                <li>S: <%= soap.complaint %></li>
-                <li>A: <%= soap.diagnosis %></li>
-                <li>Exames: <%= soap.exams %></li>
-                <li>Encaminhamentos: <%= soap.referring %></li>
-                <li><%= link_to 'Editar componente', edit_consult_soap_path(soap.consult, soap), class: 'btn btn-primary' %></li>
-              </ul>
-            <% end %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
+
+
