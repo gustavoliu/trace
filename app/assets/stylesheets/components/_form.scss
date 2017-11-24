@@ -18,15 +18,15 @@
 
 
 .form-register-wrapper {
-  width: 80%;
+  width: 60%;
   display: flex;
-  justify-content: flex-start;
-  margin: 30px 0 30px 0;
-  padding: 0 0 30px 0px;
+  flex-direction: column;
+  justify-content: center;
+  margin: 30px 0 30px 30px;
 }
 
 .form_patient {
-  width: 100%;
+  width: 80%;
   text-align:center;
   margin-top: 250px;
   form {
