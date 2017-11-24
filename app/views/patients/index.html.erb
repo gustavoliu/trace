@@ -14,20 +14,19 @@
     <div class="container">
       <div class="row">
           <% @patients.each do |patient| %>
-            <div class="col-xs-12 col-sm-4">
-              <div class="card">
-                <div class="card-category"></div>
-                  <%= link_to patient_new_with_soap_path(patient) do %>
-                  <div class="card-description">
-
-                  <p><%= patient.full_name %></p>
-                  <% unless patient.consults.last.soaps.empty? %>
-                  <p><%= patient.age %></p>
-                  <% end %>
+            <%= link_to patient_new_with_soap_path(patient) do %>
+              <div class="col-xs-12 col-sm-4">
+                <div class="card">
+                  <div class="card-category"></div>
+                    <div class="card-description">
+                      <p><%= patient.full_name %></p>
+                      <% unless patient.consults.last.soaps.empty? %>
+                      <p><%= patient.age %></p>
+                      <% end %>
+                  </div>
                 </div>
               </div>
-            </div>
-          <% end %>
+            <% end %>
           <% end %>
       </div>
     </div>
