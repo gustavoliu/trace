@@ -1,12 +1,20 @@
 <div class="container">
   <div class="form-title">
     <br>
-    <h3><%= @patient.full_name.capitalize %>, <%= @patient.age %></h3>
+    <h3>
+      <%= @patient.full_name.capitalize %>, <%= @patient.age %>
+      <%= link_to edit_patient_path(@patient), class:'edit_link' do %>
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+      <% end %>
+    </h3>
   </div>
 
   <p> Data: <%= date_format(@consult.consult_date) %></p>
   <p>
-    <strong>Local:</strong> <%= @consult.place %> / <strong>CNES Unidade: </strong><%= @consult.unit_cnes %> / <strong>Número da equipe: </strong> <%= @consult.team_number %> / <strong>Turno:</strong> <%= @consult.turn %>    <%= link_to 'Editar',  edit_consult_path(@consult), class:'btn btn-primary' %>
+    <strong>Local:</strong> <%= @consult.place %> / <strong>CNES Unidade: </strong><%= @consult.unit_cnes %> / <strong>Número da equipe: </strong> <%= @consult.team_number %> / <strong>Turno:</strong> <%= @consult.turn %>
+    <%= link_to edit_consult_path(@consult), class:'edit_link' do %>
+      <i class="fa fa-pencil" aria-hidden="true"></i>
+    <% end %>
   </p>
   <br>
 
