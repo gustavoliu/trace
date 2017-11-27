@@ -21,12 +21,12 @@ class ConsultsController < ApplicationController
       @consult.turn = Consult.turns.keys[2]
     end
 
+
     if @consult.save
       redirect_to  consult_path(@consult)
     else
       render :new
     end
-
   end
 
 
