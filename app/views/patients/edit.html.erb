@@ -10,7 +10,8 @@
                                     order: [:day, :month, :year],
                                     label: 'Data de Nascimento' %>
       <%= f.input :gender, collection: Patient.genders.keys, label: 'Gênero' %>
-      <%=  f.input :sus_number, label: 'Número cartão SUS' %>
+      <%= f.input :sus_number, label: 'Número cartão SUS' %>
+      <%= f.input :prontuario_number, label: 'Número do prontuário' %>
       <%= f.input :address, label: 'Endereço' %>
       <%= f.submit "Salvar alterações", class: 'btn btn-primary' %>
     <% end %>

@@ -3,7 +3,7 @@
   <br>
    <h3>
       <%= link_to patient_path(@patient) do %>
-        <%= @patient.full_name.capitalize %>, <%= @patient.age %>
+        <%= @patient.full_name.titleize %>, <%= @patient.age %>
       <% end %>
       <%= link_to edit_patient_path(@patient), class:'edit_link' do %>
         <i class="fa fa-pencil" aria-hidden="true"></i>
