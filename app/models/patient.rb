@@ -1,6 +1,8 @@
 class Patient < ApplicationRecord
   include PgSearch
   pg_search_scope :search_by_full_name, against: [:full_name, :sus_number]
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
   has_many :consults
   enum gender: [ :Masculino, :Feminino, :Outros ]
 

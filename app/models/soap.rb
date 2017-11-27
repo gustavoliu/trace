@@ -1,6 +1,9 @@
 class Soap < ApplicationRecord
   belongs_to :consult
 
+  include PgSearch
+  pg_search_scope :search_by_diagnosis, against: [:diagnosis]
+
   EXAMS_OPTIONS = [ 'Creatinina', 'EAS', 'ECG', 'Eletroforese Hb', 'Escarro', 'Espirometria', 'Hemograma', 'Hemoglobina Glicada', 'Glicemia' ]
   REFERRING_OPTIONS = [ 'Retorno', 'Encaminhamento Grupo', 'Encaminhamento especialidade', 'NASF', 'Urgência' ]
 

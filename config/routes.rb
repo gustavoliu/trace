@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'reports/get_consults'
 
-  get 'reports/get_diagnosis'
+  resources :reports, only: [ :get_consults, :get_diagnosis, :show, :index ]
 
   root to: 'patients#index'
 
