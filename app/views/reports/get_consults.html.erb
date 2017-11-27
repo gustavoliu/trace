@@ -7,3 +7,8 @@
 <% @consults_by_month.each do |month, count| %>
   <li><%= month %>: <%= count %></li>
 <% end %>
+
+
+<% content_for(:after_js) do %>
+<%= column_chart @consults_by_month.reverse_each %>
+<% end %>
