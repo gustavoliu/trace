@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'reports/get_consults'
+
+  get 'reports/get_diagnosis'
+
   root to: 'patients#index'
 
   get 'soaps/new'
