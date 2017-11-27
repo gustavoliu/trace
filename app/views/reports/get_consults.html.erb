@@ -1,2 +1,14 @@
 <h1>Reports#get_consults</h1>
 <p>Find me in app/views/reports/get_consults.html.erb</p>
+
+
+<!-- todo: 1. coletar data inicial com data final e devolver um array de datas 2. iterar mes a mes retornando o resultado por conjunto de arrays -->
+
+<% @consults_by_month.each do |month, count| %>
+  <li><%= month %>: <%= count %></li>
+<% end %>
+
+
+<% content_for(:after_js) do %>
+<%= column_chart @consults_by_month.reverse_each %>
+<% end %>
