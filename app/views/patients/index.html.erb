@@ -17,7 +17,7 @@
           <%= link_to  patient_new_with_soap_path(patient) do %>
             <div class="col-xs-12 col-sm-3">
               <div class="card" style="background-color: #DFEAE6; padding: 10px; box-shadow: 0 1px 2px; color: gray">
-                <div class="card-category"><%= patient.full_name %></div>
+                <div class="card-category"><%= patient.full_name.titleize %></div>
                 <div class="card-description">
                   <p><%= date_format(patient.birthday) %></p>
                   <p><%= patient.sus_number %></p>
