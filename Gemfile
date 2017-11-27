@@ -25,6 +25,8 @@ gem 'coffee-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'geocoder'
 gem "gmaps4rails"
+gem "chartkick"
+
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end

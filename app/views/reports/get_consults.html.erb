@@ -4,6 +4,6 @@
 
 <!-- todo: 1. coletar data inicial com data final e devolver um array de datas 2. iterar mes a mes retornando o resultado por conjunto de arrays -->
 
-<% selected_month = Date.today %>
-<%= p Report.get_consults %>
-
+<% @consults_by_month.each do |month, count| %>
+  <li><%= month %>: <%= count %></li>
+<% end %>
