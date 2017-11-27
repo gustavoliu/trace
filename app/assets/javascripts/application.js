@@ -8,6 +8,8 @@
 //= require gmaps/google
 //= require Chart.bundle
 //= require chartkick
+//= require select2
+//= require select2_simple_form
 //= require_tree .
 
 $(document).ready(function() {
