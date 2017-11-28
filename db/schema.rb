@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171127185328) do
+ActiveRecord::Schema.define(version: 20171128142753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,14 +101,15 @@ ActiveRecord::Schema.define(version: 20171127185328) do
   end
 
   create_table "soaps", force: :cascade do |t|
-    t.string "consult_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "exams"
     t.text "referring"
     t.bigint "complaint_id"
     t.bigint "diagnosis_id"
+    t.bigint "consult_id"
     t.index ["complaint_id"], name: "index_soaps_on_complaint_id"
+    t.index ["consult_id"], name: "index_soaps_on_consult_id"
     t.index ["diagnosis_id"], name: "index_soaps_on_diagnosis_id"
   end
 
@@ -132,6 +133,7 @@ ActiveRecord::Schema.define(version: 20171127185328) do
   add_foreign_key "patient_problems", "diseases"
   add_foreign_key "patient_problems", "patients"
   add_foreign_key "professionals", "users"
+  add_foreign_key "soaps", "consults"
   add_foreign_key "soaps", "diseases", column: "complaint_id"
   add_foreign_key "soaps", "diseases", column: "diagnosis_id"
 end
