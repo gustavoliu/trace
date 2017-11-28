@@ -8,23 +8,6 @@
   padding: 20px;
 }
 
-.card {
-  height: 140px;
-  width: 250px;
-  background-size: cover !important;
-  background-position: center;
-  color: gray;
-  position: relative;
-  margin-top: 30px;
-  box-shadow: 0px 0px 1px #e7e7e7;
-  border-radius: 4px;
-  padding: 5px;
-
-
-  a {
-    color: gray;
-  }
-}
 
 .card-daily-report {
   color: gray;
@@ -41,7 +24,6 @@
 }
 
 
-
 .card-wraper {
   padding: 0 30px;
 }
@@ -55,19 +37,6 @@
   flex: auto;
 }
 
-.card-category {
-  font-weight: bold
-}
-
-.card-description {
-  padding: 5px;
-  height: 60px;
-}
-
-
-.card:hover {
-  opacity: 0.3;
-}
 
 .card-show {
   border: 1px solid gray;
@@ -94,10 +63,6 @@
   margin: 0 -5px;
 }
 
-
-.card-list {
-
-}
 
 .card-body {
   padding-left: 5px;
