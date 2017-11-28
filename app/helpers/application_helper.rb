@@ -21,4 +21,8 @@ module ApplicationHelper
   def stringify(array)
     array.flatten.reject { |c| c.empty? }.uniq.join(", ")
   end
+
+  def stringify_diseases(array_of_diseases)
+    stringify(array_of_diseases.map { |d| d.ciap_code })
+  end
 end

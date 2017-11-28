@@ -8,6 +8,11 @@
 //= require gmaps/google
 //= require Chart.bundle
 //= require chartkick
+//= require select2
+//= require select2_simple_form
+//= require bootstrap-datepicker
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.pt.js
 //= require_tree .
 
 $(document).ready(function() {

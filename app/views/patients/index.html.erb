@@ -1,8 +1,12 @@
 <div class="banner_search">
-  <h1 align="left"> Input data once </h1>
-  <h2 align="left"> Know the stats of people under your care </h2>
+  <div>
+    <h1 align="left"> Input data once </h1>
+    <h2 align="left"> Know the stats of people under your care </h2>
+  </div>
+</div>
+<div class="form_patient">
   <div class="container">
-    <div class="form_patient">
+    <div class="row">
       <%= form_tag patients_path, method: :get do %>
         <div class="search-patient">
           <%= text_field_tag 'term', params[:term], placeholder: " Nome do paciente ou Número SUS", class: "search_box"%>
@@ -11,25 +15,35 @@
         </div>
       <% end %>
     </div>
-    <div class="container">
-      <div class="row">
-        <% @patients.each do |patient| %>
-          <%= link_to  patient_new_with_soap_path(patient) do %>
-            <div class="col-xs-12 col-sm-3">
-              <div class="card" style="background-color: #DFEAE6; padding: 10px; box-shadow: 0 1px 2px; color: gray">
-                <div class="card-category"><%= patient.full_name.titleize %></div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <% @patients.each do |patient| %>
+      <div class="col-xs-12 col-sm-4 col-md-3 ">
+        <div class="card" >
+            <%= link_to patient_path(patient) do %>
+              <div class="card-content" style="background-color: #DFEAE6; padding: 10px; box-shadow: 0 1px 2px; color: gray">
+                <div class="card-category"><%= patient.full_name %></div>
                 <div class="card-description">
                   <p><%= date_format(patient.birthday) %></p>
                   <p><%= patient.sus_number %></p>
                 </div>
               </div>
-            </div>
-          <% end %>
-        <% end %>
+            <% end %>
+          <div class="card-button">
+            <%=
+            link_to "Nova Consulta", patient_new_with_soap_path(patient), class: 'btn btn-success'
+            %>
+          </div>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
+
+
+
 
 
 
