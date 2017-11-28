@@ -8,6 +8,9 @@
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "select2";
+@import "select2-bootstrap";
+@import "bootstrap-datepicker3";
 
 // Your CSS partials
 @import "layouts/index";
@@ -20,3 +23,4 @@
 @import "components/icons.scss";
 @import "components/footer.scss";
 @import "components/reports.scss";
+@import "components/card_index.scss";

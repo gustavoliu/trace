@@ -1,23 +1,27 @@
 <div class="container">
   <%= simple_form_for( [@consult, @soap] ) do |f| %>
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 ">
-     <%= f.input :complaint, label: 'Queixa' %>
-   </div>
-   <div class="col-xs-12 col-sm-6 ">
-     <%= f.input :diagnosis, label: 'Diagnóstico' %>
-   </div>
-   <div class="col-xs-12 col-sm-6 ">
-     <%= f.input :exams, as: :check_boxes, collection: Soap::EXAMS_OPTIONS, label: 'Exames', include_hidden: false %>
-    </div>
-    <div class="col-xs-12 col-sm-6 ">
-      <%= f.input :referring, as: :check_boxes, collection: Soap::REFERRING_OPTIONS, label: 'Conduta', include_hidden: false %>
-    </div>
     <div class="row">
-      <div class="col-xs-12 col-sm-6 col-sm-offset-3 ">
-        <%= f.button :submit, 'Salvar', class: 'btn btn-success', id: 'large_btn'  %>
+      <div class="col-xs-12 col-sm-6 ">
+       <%= f.association :complaint, as: :select2, collection: @complaints, label_method: lambda { |t| "#{t.ciap_code} - #{t.formal_name}" }, label: 'Queixa', multiple: false, include_hidden: false, input_html: { value: "Hello" } %>
+      </div>
+      <div class="col-xs-12 col-sm-6 ">
+        <%= f.association :diagnosis, as: :select2, collection: @diagnoses, label_method: lambda { |t| "#{t.ciap_code} - #{t.formal_name}" }, label: 'Diagnóstico', include_hidden: false, input_html: { value: "World" } %>
+      </div>
+      <div class="col-xs-12 col-sm-6 ">
+        <%= f.input :exams, as: :select2, collection: Soap::EXAMS_OPTIONS, label: 'Exames', multiple: true, include_hidden: false, placeholder: "Se mais de 1, tecle 'Enter' após escolher" %>
+      </div>
+      <div class="col-xs-12 col-sm-6 ">
+        <div class="form-group">
+          <%= f.label :referring, "Conduta", class: "form-label" %>
+          <%= f.select :referring, grouped_options_for_select(Soap::GROUPED_REFERRING_OPTIONS, @soap.referring), { include_hidden: false }, placeholder: "Encaminhamentos realizados", class: "form-control select2", multiple: true, "data-ui" => "select2-simpleform" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3 ">
+          <%= f.button :submit, 'Salvar', class: 'btn btn-success', id: 'large_btn'  %>
+        </div>
       </div>
     </div>
-      <% end %>
-  </div>
+  <% end %>
 </div>
