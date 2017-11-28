@@ -3,7 +3,7 @@
       <%= form_tag reports_path, method: :get do %>
         <%= render 'datepicker_form' %>
         <div class="search-patient">
-          <%= text_field_tag 'term', params[:term], placeholder: " Digite o Diagnótico", class: "search_box"%>
+          <%= text_field_tag 'term', params[:term], placeholder: " Digite o diagnóstico", class: "search_box"%>
 
           <%= submit_tag 'Buscar', class: "btn btn-primary" %>
         </div>
