@@ -29,7 +29,7 @@
             <div class="card-show">
               <div class="card-header">
                 <div class="card-header-right-items">
-                  <%= link_to consult_path(consult), method: :delete, data: {confirm: "Confirma?"} do %>
+                  <%= link_to consult_path(consult), method: :delete, data: {confirm: "Quer mesmo excluir essa consulta?"} do %>
                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                   <% end %>
                   <%= link_to edit_consult_path(consult) do %>
