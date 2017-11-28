@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
-  resources :reports, only: [ :get_consults, :get_diagnosis, :show, :index ]
+  get 'reports/get_consults'
+  get 'reports/get_diagnosis'
+  get 'reports/get_exams'
+  get 'reports/home'
+  get 'reports/get_complaints'
+
+  resources :reports, only: [:index]
 
   root to: 'patients#index'
 
