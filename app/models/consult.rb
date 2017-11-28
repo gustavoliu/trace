@@ -1,7 +1,7 @@
 class Consult < ApplicationRecord
   belongs_to :professional
   belongs_to :patient
-  has_many :soaps
+  has_many :soaps, dependent: :destroy
 
   include PgSearch
   pg_search_scope :search_by_consult_date, against: [:consult_date]
