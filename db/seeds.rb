@@ -10,6 +10,7 @@ csv.each do |row|
   d.ciap_code = row[0]
   d.formal_name = row[1]
   d.pop_name = row[2]
+  d.is_diagnosis = row[3]
   d.save
 end
 

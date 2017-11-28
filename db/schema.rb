@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171127182003) do
+ActiveRecord::Schema.define(version: 20171128142753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,19 @@ ActiveRecord::Schema.define(version: 20171127182003) do
     t.string "pop_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_diagnosis"
+  end
+
+  create_table "patient_problems", force: :cascade do |t|
+    t.bigint "patient_id"
+    t.bigint "disease_id"
+    t.text "comment"
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["disease_id"], name: "index_patient_problems_on_disease_id"
+    t.index ["patient_id"], name: "index_patient_problems_on_patient_id"
   end
 
   create_table "patients", force: :cascade do |t|
@@ -58,6 +71,8 @@ ActiveRecord::Schema.define(version: 20171127182003) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "gender"
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "pg_search_documents", force: :cascade do |t|
@@ -86,14 +101,15 @@ ActiveRecord::Schema.define(version: 20171127182003) do
   end
 
   create_table "soaps", force: :cascade do |t|
-    t.string "consult_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "exams"
     t.text "referring"
     t.bigint "complaint_id"
     t.bigint "diagnosis_id"
+    t.bigint "consult_id"
     t.index ["complaint_id"], name: "index_soaps_on_complaint_id"
+    t.index ["consult_id"], name: "index_soaps_on_consult_id"
     t.index ["diagnosis_id"], name: "index_soaps_on_diagnosis_id"
   end
 
@@ -114,7 +130,10 @@ ActiveRecord::Schema.define(version: 20171127182003) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "patient_problems", "diseases"
+  add_foreign_key "patient_problems", "patients"
   add_foreign_key "professionals", "users"
+  add_foreign_key "soaps", "consults"
   add_foreign_key "soaps", "diseases", column: "complaint_id"
   add_foreign_key "soaps", "diseases", column: "diagnosis_id"
 end

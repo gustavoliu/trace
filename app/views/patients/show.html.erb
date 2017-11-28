@@ -28,7 +28,15 @@
           <div class="col-xs-12">
             <div class="card-show">
               <div class="card-header">
-                <br>
+                <div class="card-header-right-items">
+                  <%= link_to consult_path(consult), method: :delete, data: {confirm: "Quer mesmo excluir essa consulta?"} do %>
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                  <% end %>
+                  <%= link_to edit_consult_path(consult) do %>
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                  <% end %>
+
+                </div>
               </div>
               <h4>Data: <%= consult.consult_date.strftime('%d/%m/%Y')%></h4>
               <div class="card-body">
@@ -42,14 +50,13 @@
                   </li>
                   <br>
                   <% consult.soaps.each do |soap| %>
-                    <li><strong>S</strong>: <%= soap.complaint %></li>
-                    <li><strong>A</strong>: <%= soap.diagnosis %></li>
+                    <li><strong>S</strong>: <%= soap.complaint.ciap_and_description %></li>
+                    <li><strong>A</strong>: <%= soap.diagnosis.ciap_and_description %></li>
                     <li><strong>Ex</strong>: <%= stringify(soap.exams) %></li>
                     <li><strong>CD</strong>: <%= stringify(soap.referring) %></li>
                     <br>
                     <a><%= link_to 'Editar SOAP', edit_consult_soap_path(soap.consult, soap), class: 'btn btn-success' %></a>
                   <% end %>
-                  <a><%= link_to 'Editar Consulta', edit_consult_path(consult), class: 'btn btn-success' %></a>
                   <br>
                 </ul>
               </div>

@@ -1,10 +1,8 @@
 class ConsultsController < ApplicationController
-  before_action :set_consult, only: [:show, :edit, :update]
+  before_action :set_consult, only: [:show, :edit, :update, :destroy]
 
   def all
     @consults_all = Consult.all
-  end
-
   end
 
   def new_with_soap
@@ -27,12 +25,12 @@ class ConsultsController < ApplicationController
       @consult.turn = Consult.turns.keys[2]
     end
 
+
     if @consult.save
       redirect_to  consult_path(@consult)
     else
       render :new
     end
-
   end
 
 
@@ -60,6 +58,8 @@ class ConsultsController < ApplicationController
     @patient = @consult.patient
     @soap = Soap.new
     @soaps = @consult.soaps.all
+    @complaints = Disease.all
+    @diagnoses = Disease.where(is_diagnosis: true)
   end
 
   def edit
@@ -76,6 +76,11 @@ class ConsultsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @consult.destroy
+    redirect_to patient_path(@consult.patient)
   end
 
 
