@@ -30,7 +30,35 @@ class ReportsController < ApplicationController
     get_consults
   end
 
+  def get_exams
+    @month = Date.current.beginning_of_month
+    if params["month(1i)"].present?
+      @month = Date.new(params["month(1i)"].to_i, params["month(2i)"].to_i)
+    end
+    @exams = Soap.where(created_at: @month..@month.end_of_month)
+                  .group(:exams)
+                  .order("COUNT(exams) DESC")
+                  .limit(5)
+                  .count
+  end
+
+  def get_complaints
+    @month = Date.current.beginning_of_month
+    if params["month(1i)"].present?
+      @month = Date.new(params["month(1i)"].to_i, params["month(2i)"].to_i)
+    end
+    @complaints = Soap.where(created_at: @month..@month.end_of_month)
+                  .group(:complaint_id)
+                  .order("COUNT(complaint_id) DESC")
+                  .limit(5)
+                  .count
+  end
+
   def home
+    get_consults
+    get_diagnosis
+    get_exams
+    get_complaints
   end
 
 
