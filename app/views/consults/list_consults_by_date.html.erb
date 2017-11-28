@@ -20,9 +20,9 @@
               <% exams.push(soap.exams) %>
               <% referring.push(soap.referring) %>
             <% end %>
-          <strong>CIAP - S:</strong> <%= stringify(complaints) %>
+          <strong>CIAP - S:</strong> <%= stringify_diseases(complaints) %>
           <br>
-          <strong>CIAP - A:</strong> <%= stringify(diagnoses) %>
+          <strong>CIAP - A:</strong> <%= stringify_diseases(diagnoses) %>
           <br>
           <strong>Exames solicitados:</strong> <%= stringify(exams) %>
           <br>
