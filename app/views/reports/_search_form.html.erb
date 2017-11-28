@@ -1,6 +1,7 @@
 <div class="container">
     <div class="form_search">
       <%= form_tag reports_path, method: :get do %>
+        <%= render 'datepicker_form' %>
         <div class="search-patient">
           <%= text_field_tag 'term', params[:term], placeholder: " Digite o Diagnótico", class: "search_box"%>
 
