@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(version: 20171127185328) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "gender"
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "pg_search_documents", force: :cascade do |t|
