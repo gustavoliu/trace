@@ -1,12 +1,8 @@
 <% content_for(:charts) do %>
   <div class="col-xs-12 col-md-6">
-    <h2>Volume de consultas por mês</h2>
-
-    <p>Selecione o mês:</p>
-    <%= form_tag reports_get_consults_path, method: :get do %>
-      <%= date_select nil, :month, selected: @month, discard_day: true, end_year: Date.current.year, start_year: Date.current.year - 3 %>
-      <button type="submit" class="btn btn-primary">Buscar</button>
-    <% end %>
+    <h4>Volume de consultas por mês</h4>
     <%= column_chart @consults_by_month %>
   </div>
+
+
 <% end %>
