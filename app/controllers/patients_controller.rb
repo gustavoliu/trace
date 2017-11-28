@@ -7,8 +7,8 @@ class PatientsController < ApplicationController
 
     if params[:term].present?
       @patients = @patients.search_by_full_name(params[:term])
-      else
-      @patients = @patients.joins(:consults).where("consults.consult_date" => Date.current)
+    else
+      @patients = @patients.joins(:consults).where("consults.consult_date" => Date.current).distinct
     end
 
     # if params[:address].present?
