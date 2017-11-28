@@ -7,6 +7,7 @@ class SoapsController < ApplicationController
   end
 
   def create
+    @complaint = Disease.find_by(ciap_code: params[:soap][:complaint])
     @soap = Soap.new(soap_params)
     @consult = Consult.find(params[:consult_id])
     @soap.consult = Consult.find(params[:consult_id])
