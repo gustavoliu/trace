@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   get 'reports/get_diagnosis'
 
+  get 'reports/home'
+
+  resources :reports, only: [:index]
+
   root to: 'patients#index'
 
   get 'soaps/new'

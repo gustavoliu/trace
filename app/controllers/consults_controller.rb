@@ -1,6 +1,12 @@
 class ConsultsController < ApplicationController
   before_action :set_consult, only: [:show, :edit, :update]
 
+  def all
+    @consults_all = Consult.all
+  end
+
+  end
+
   def new_with_soap
     @patient = Patient.find(params[:patient_id])
     @consult = Consult.new
@@ -71,6 +77,7 @@ class ConsultsController < ApplicationController
       render :edit
     end
   end
+
 
 
   private
