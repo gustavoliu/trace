@@ -60,6 +60,8 @@ class ConsultsController < ApplicationController
     @patient = @consult.patient
     @soap = Soap.new
     @soaps = @consult.soaps.all
+    @complaints = Disease.all
+    @diagnoses = Disease.where(is_diagnosis: true)
   end
 
   def edit

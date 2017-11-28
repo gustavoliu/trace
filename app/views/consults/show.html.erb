@@ -25,8 +25,8 @@
   <div class="row">
     <% @soaps.each do |s| %>
       <div class="card-soap col-sm-4">
-          <p>CIAP - S: <%= s.complaint %></p>
-          <p>CIAP - A: <%= s.diagnosis %></p>
+          <p>CIAP - S: <%= s.complaint.ciap_code %></p>
+          <p>CIAP - A: <%= s.diagnosis.ciap_code %></p>
           <p>Ex: <%= stringify(s.exams) %></p>
           <p>CD: <%= stringify(s.referring) %></p>
       </div>
