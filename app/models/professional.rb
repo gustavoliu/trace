@@ -4,6 +4,7 @@ class Professional < ApplicationRecord
 
   has_attachment :photo
   has_many :consults
+  has_many :patients, through: :consults
   validates :full_name, :profession, :birthday, :professional_number, presence: true, on: :update
 
   def completed?

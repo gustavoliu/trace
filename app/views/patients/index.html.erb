@@ -1,8 +1,12 @@
 <div class="banner_search">
-  <h1 align="left"> Input data once </h1>
-  <h2 align="left"> Know the stats of people under your care </h2>
+  <div>
+    <h1 align="left"> Input data once </h1>
+    <h2 align="left"> Know the stats of people under your care </h2>
+  </div>
+</div>
+<div class="form_patient">
   <div class="container">
-    <div class="form_patient">
+    <div class="row">
       <%= form_tag patients_path, method: :get do %>
         <div class="search-patient">
           <%= text_field_tag 'term', params[:term], placeholder: " Nome do paciente ou Número SUS", class: "search_box"%>
@@ -11,6 +15,8 @@
         </div>
       <% end %>
     </div>
+  </div>
+</div>
     <div class="container">
       <div class="row">
         <% @patients.each do |patient| %>
