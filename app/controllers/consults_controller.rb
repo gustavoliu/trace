@@ -5,8 +5,6 @@ class ConsultsController < ApplicationController
     @consults_all = Consult.all
   end
 
-  end
-
   def new_with_soap
     @patient = Patient.find(params[:patient_id])
     @consult = Consult.new
