@@ -22,6 +22,10 @@
 
     <%= cloudinary_js_config %>
      <%= yield(:after_js) %>
+
+     <div class="container">
+      <%= yield(:charts) %>
+     </div>
   </body>
 
 </html>
