@@ -1,0 +1,48 @@
+
+<div class="form_search">
+  <%= render 'search_form' %>
+</div>
+
+<div class="content">
+  <div class="cards-container">
+    <div class="wrapper-blue">
+      <div class="card-wraper">
+        <div class="row">
+          <div class="col-xs-12 col-sm-8">
+            <% @patients.each do |patient| %>
+              <div class="col-xs-12 col-sm-6">
+                <div class="card" style="background-color: #DFEAE6; padding: 10px; box-shadow: 0 1px 2px; color: gray">
+                 <div class="card-category"><%= patient.full_name.titleize %></div>
+                  <div class="card-description">
+                    <p><%= date_format(patient.birthday) %></p>
+                    <p><%= patient.sus_number %></p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <div id="map" style="width: 100%; height: 600px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    var handler = Gmaps.build('Google');
+    handler.buildMap({ internal: { id: 'map' } }, function() {
+      markers = handler.addMarkers(<%= raw @hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      if (markers.length == 0) {
+        handler.getMap().setZoom(2);
+      } else if (markers.length == 1) {
+        handler.getMap().setZoom(14);
+      }
+    });
+  <% end %>
+<% end %>

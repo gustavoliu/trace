@@ -2,16 +2,16 @@
   <%= simple_form_for( [@consult, @soap] ) do |f| %>
   <div class="row">
     <div class="col-xs-12 col-sm-6 ">
-     <%= f.input :complaint, label: 'Queixa' %>
+     <%= f.input :complaint, as: :select2, collection: [Disease.first.ciap_code], label: 'Queixa', multiple: false, include_hidden: false, input_html: { value: f.object } %>
    </div>
    <div class="col-xs-12 col-sm-6 ">
      <%= f.input :diagnosis, label: 'Diagnóstico' %>
    </div>
    <div class="col-xs-12 col-sm-6 ">
-     <%= f.input :exams, as: :check_boxes, collection: Soap::EXAMS_OPTIONS, label: 'Exames', include_hidden: false %>
+     <%= f.input :exams, as: :select2, collection: Soap::EXAMS_OPTIONS, label: 'Exames', multiple: true, include_hidden: false, input_html: { placeholder: 'Escolha um exame'} %>
     </div>
     <div class="col-xs-12 col-sm-6 ">
-      <%= f.input :referring, as: :check_boxes, collection: Soap::REFERRING_OPTIONS, label: 'Conduta', include_hidden: false %>
+      <%= f.input :referring, as: :select2, collection: Soap::REFERRING_OPTIONS, label: 'Conduta', multiple: true, include_hidden: false %>
     </div>
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-sm-offset-3 ">

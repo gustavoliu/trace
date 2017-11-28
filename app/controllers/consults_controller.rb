@@ -1,5 +1,5 @@
 class ConsultsController < ApplicationController
-  before_action :set_consult, only: [:show, :edit, :update]
+  before_action :set_consult, only: [:show, :edit, :update, :destroy]
 
   def all
     @consults_all = Consult.all
@@ -27,12 +27,12 @@ class ConsultsController < ApplicationController
       @consult.turn = Consult.turns.keys[2]
     end
 
+
     if @consult.save
       redirect_to  consult_path(@consult)
     else
       render :new
     end
-
   end
 
 
@@ -76,6 +76,11 @@ class ConsultsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @consult.destroy
+    redirect_to patient_path(@consult.patient)
   end
 
 
