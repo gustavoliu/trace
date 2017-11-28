@@ -1,5 +1,5 @@
 class ConsultsController < ApplicationController
-  before_action :set_consult, only: [:show, :edit, :update]
+  before_action :set_consult, only: [:show, :edit, :update, :destroy]
 
   def new_with_soap
     @patient = Patient.find(params[:patient_id])
@@ -70,6 +70,11 @@ class ConsultsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @consult.destroy
+    redirect_to patient_path(@consult.patient)
   end
 
 
