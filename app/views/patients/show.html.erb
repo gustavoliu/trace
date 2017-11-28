@@ -32,6 +32,10 @@
                   <%= link_to consult_path(consult), method: :delete, data: {confirm: "Confirma?"} do %>
                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                   <% end %>
+                  <%= link_to edit_consult_path(consult) do %>
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                  <% end %>
+
                 </div>
               </div>
               <h4>Data: <%= consult.consult_date.strftime('%d/%m/%Y')%></h4>
@@ -53,8 +57,6 @@
                     <br>
                     <a><%= link_to 'Editar SOAP', edit_consult_soap_path(soap.consult, soap), class: 'btn btn-success' %></a>
                   <% end %>
-                  <a><%= link_to 'Editar Consulta', edit_consult_path(consult), class: 'btn btn-success' %></a>
-
                   <br>
                 </ul>
               </div>
