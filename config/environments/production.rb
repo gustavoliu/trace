@@ -28,6 +28,12 @@ Rails.application.configure do
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
 
+  # IE8 doesn't support some unescaped Unicode character
+  # and need to quote keys in object literals
+  # Configure Uglifier to do it.
+  require 'uglifier'
+  config.assets.js_compressor = Uglifier.new(output: {ascii_only: true, quote_keys: true})
+
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
