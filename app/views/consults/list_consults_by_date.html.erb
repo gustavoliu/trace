@@ -6,7 +6,7 @@
       <div class="col-xs-12">
         <div class="card-daily-report">
           <% p = c.patient %>
-          <%= p.full_name %>, <% p.gender %>, <strong>Nascimento:</strong> <%= date_format(p.birthday) %> -- <strong>SUS: </strong><%= p.sus_number %> -- <strong>Prontuário:</strong> <%= p.prontuario_number %>
+          <%= p.full_name %>, <%= p.gender %>, <strong>Nascimento:</strong> <%= date_format(p.birthday) %> -- <strong>SUS: </strong><%= p.sus_number %> -- <strong>Prontuário:</strong> <%= p.prontuario_number %>
           <br>
           <strong>Local:</strong> <%= c.place %> -- <strong>Turno:</strong> <%= c.turn %> -- <strong>CNES Unidade:</strong> <%= c.unit_cnes %> -- <strong>Equipe:</strong> <%= c.team_number %>
           <br>

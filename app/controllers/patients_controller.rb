@@ -3,12 +3,12 @@ class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit, :update]
 
   def index
-    @patients = Patient.all
+    @patients = current_user.professional.patients
 
     if params[:term].present?
       @patients = @patients.search_by_full_name(params[:term])
     else
-      @patients = @patients.joins(:consults).where("consults.consult_date" => Date.current)
+      @patients = @patients.joins(:consults).where("consults.consult_date" => Date.current).distinct
     end
 
     # if params[:address].present?
