@@ -73,6 +73,8 @@ class ConsultsController < ApplicationController
   end
 
   def destroy
+    @consult.destroy
+    redirect_to patient_path(@consult.patient)
   end
 
 
