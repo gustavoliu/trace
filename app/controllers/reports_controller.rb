@@ -62,7 +62,17 @@ class ReportsController < ApplicationController
   end
 
   def index
-    @patients = Patient.all
+    @patients = Patient.all.joins(consults: { soaps: :diagnosis })
+
+    if params[:start_date].present?
+      start_date = Date.parse(params[:start_date])
+      @patients = @patients.where("consults.consult_date >= ?", start_date)
+    end
+
+    if params[:end_date].present?
+      end_date = Date.parse(params[:end_date])
+      @patients = @patients.where("consults.consult_date <= ?", end_date)
+    end
 
     # if params[:address].present?
     #   @patients = @patients.near(params[:address], 10)
@@ -73,7 +83,7 @@ class ReportsController < ApplicationController
     # end
 
     if params[:term].present?
-      @patients = @patients.joins(consults: { soaps: :diagnosis }).where("diseases.ciap_code ILIKE ?", "%#{params[:term]}%")
+      @patients = @patients.where("diseases.ciap_code ILIKE ?", "%#{params[:term]}%")
     end
 
 

@@ -1,0 +1,20 @@
+
+
+<div class="form-group">
+  <input type="text" id='datepicker' class='datepicker' placeholder= "Data inicial" name="start_date" value="<%= params[:start_date] %>">
+   <input type="text" id='datepicker' class='datepicker' placeholder="Data final" name="end_date" value="<%= params[:end_date] %>">
+</div>
+
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    // Datepicker
+    $(document).ready(function(){
+      $('.datepicker').datepicker({
+        todayHighlight: true,
+        format: "dd/mm/yyyy",
+        language: "pt-BR"
+      });
+    });
+  <% end %>
+<% end %>
