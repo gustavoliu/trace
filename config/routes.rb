@@ -29,10 +29,11 @@ Rails.application.routes.draw do
   get 'list_consults_by_date', to: 'consults#list_consults_by_date'
 
   resources :consults, only: [ :index, :show, :edit, :update, :destroy ] do
-    resources :soaps, only: [ :new, :create, :edit, :update ]
+    resources :soaps, only: [ :new, :create, :update ]
   end
 
-  resources :soaps, only: [ :destroy ]
+
+  resources :soaps, only: [ :destroy, :edit ]
 
   resources :professionals, only: [ :new, :edit, :destroy, :show, :update ]
 end

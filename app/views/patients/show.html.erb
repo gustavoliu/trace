@@ -50,12 +50,17 @@
                   </li>
                   <br>
                   <% consult.soaps.each do |soap| %>
-                    <li><strong>S</strong>: <%= soap.complaint.ciap_and_description %></li>
+                    <li>
+                    <strong>S</strong>: <%= soap.complaint.ciap_and_description %>
+                    <%= link_to edit_soap_path(soap) do %>
+                      <i class="fa fa-pencil" aria-hidden="true" style= "font-size:15px; color:gray"></i>
+                    <% end %>
+                    </li>
                     <li><strong>A</strong>: <%= soap.diagnosis.ciap_and_description %></li>
                     <li><strong>Ex</strong>: <%= stringify(soap.exams) %></li>
                     <li><strong>CD</strong>: <%= stringify(soap.referring) %></li>
                     <br>
-                    <a><%= link_to 'Editar SOAP', edit_consult_soap_path(soap.consult, soap), class: 'btn btn-success' %></a>
+
                   <% end %>
                   <br>
                 </ul>
