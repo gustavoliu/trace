@@ -6,7 +6,7 @@ class PatientsController < ApplicationController
     @patients = Patient.all
 
     if params[:term].present?
-      @patients = @patients.search_by_full_name(params[:term]).uniq
+      @patients = @patients.search_by_full_name(params[:term]).uniq.sort_by!{ |e| ActiveSupport::Inflector.transliterate(e.full_name)}
     else
       @patients = @patients.joins(:consults).where("consults.consult_date" => Date.current).distinct
     end
