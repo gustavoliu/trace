@@ -2,7 +2,6 @@
     <div class="form_search">
       <%= form_tag reports_path, method: :get do %>
         <div class="search-patient">
-          <%= text_field_tag 'term', params[:term], placeholder: "Digite a data da consulta", class: "search_box"%>
           <%= text_field_tag 'term', params[:term], placeholder: " Digite o Diagnótico", class: "search_box"%>
 
           <%= submit_tag 'Buscar', class: "btn btn-primary" %>
