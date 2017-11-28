@@ -3,7 +3,7 @@ class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit, :update]
 
   def index
-    @patients = Patient.all
+    @patients = current_user.professional.patients
 
     if params[:term].present?
       @patients = @patients.search_by_full_name(params[:term])
