@@ -50,8 +50,8 @@
                   </li>
                   <br>
                   <% consult.soaps.each do |soap| %>
-                    <li><strong>S</strong>: <%= soap.complaint %></li>
-                    <li><strong>A</strong>: <%= soap.diagnosis %></li>
+                    <li><strong>S</strong>: <%= soap.complaint.ciap_and_description %></li>
+                    <li><strong>A</strong>: <%= soap.diagnosis.ciap_and_description %></li>
                     <li><strong>Ex</strong>: <%= stringify(soap.exams) %></li>
                     <li><strong>CD</strong>: <%= stringify(soap.referring) %></li>
                     <br>
