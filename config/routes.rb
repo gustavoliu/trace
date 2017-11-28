@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   get 'list_consults_by_date', to: 'consults#list_consults_by_date'
 
-  resources :consults, only: [ :index, :show, :edit, :update ] do
+  resources :consults, only: [ :index, :show, :edit, :update, :destroy ] do
     resources :soaps, only: [ :new, :create, :edit, :update ]
   end
 
