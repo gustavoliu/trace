@@ -26,6 +26,8 @@ class SoapsController < ApplicationController
 
   def edit
     @consult = @soap.consult
+    @complaints = Disease.all
+    @diagnoses = Disease.all
   end
 
   def update
