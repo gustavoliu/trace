@@ -84,6 +84,8 @@ class ReportsController < ApplicationController
   end
 
   def get_pop_pyramid
-
+    # @count = {
+    #   m0a2: count_patients("Masculino", 0, 2)
+    # }
   end
 end
