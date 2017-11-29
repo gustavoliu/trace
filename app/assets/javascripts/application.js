@@ -22,3 +22,13 @@ $(document).ready(function() {
     speed: 2500 // How many milliseconds until the next word show.
   });
 });
+
+function initAutocomplete() {
+  // Create the autocomplete object, restricting the search to geographical
+  // location types.
+  var autocomplete = new google.maps.places.Autocomplete(document.getElementById('patient_address'), { types: ['geocode'] });
+
+  // When the user selects an address from the dropdown, populate the address
+  // fields in the form.
+  // autocomplete.addListener('place_changed', fillInAddress);
+}
