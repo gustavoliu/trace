@@ -7,6 +7,14 @@
       <div class="col-xs-12 col-sm-6 ">
         <%= f.association :diagnosis, as: :select2, collection: @diagnoses, label_method: lambda { |t| "#{t.ciap_code} - #{t.formal_name}" }, label: 'Diagnóstico', include_hidden: false, input_html: { value: "World" } %>
       </div>
+      <div class="col-xs-12 col-sm-6 col-sm-offset-6">
+        <div class="flex-container">
+          <label class="flex-end">
+            <input type="checkbox" name="add_problem_to_patient">
+            Adicionar à lista de problemas do paciente
+          </label>
+        </div>
+      </div>
       <div class="col-xs-12 col-sm-6 ">
         <%= f.input :exams, as: :select2, collection: Soap::EXAMS_OPTIONS, label: 'Exames', multiple: true, include_hidden: false, placeholder: "Se mais de 1, tecle 'Enter' após escolher" %>
       </div>

@@ -10,8 +10,13 @@ class SoapsController < ApplicationController
     @soap = Soap.new(soap_params)
     @consult = Consult.find(params[:consult_id])
     @soap.consult = Consult.find(params[:consult_id])
-    # @soap.complaint = Disease.find_by(ciap_code: params[:soap][:complaint])
-    # @soap.diagnosis = Disease.find_by(ciap_code: params[:soap][:diagnosis])
+
+    if params[:add_problem_to_patient]
+      @pp = PatientProblem.new
+      @pp.patient = Consult.find(params[:consult_id]).patient
+      @pp.disease_id = params[:soap][:diagnosis_id]
+      @pp.save
+    end
 
     if @soap.save
       redirect_to consult_path(@consult)

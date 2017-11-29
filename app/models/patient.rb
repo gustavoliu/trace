@@ -8,6 +8,7 @@ class Patient < ApplicationRecord
 
   after_validation :geocode, if: :address_changed?
   has_many :consults
+  has_many :patient_problems
   enum gender: [ :Masculino, :Feminino, :Outros ]
 
 
