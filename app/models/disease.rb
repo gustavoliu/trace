@@ -1,6 +1,6 @@
 class Disease < ApplicationRecord
-  belongs_to :soap
-  belongs_to :patient_problems
+  has_many :soaps
+  has_many :patient_problems
 
   def ciap_and_description()
     "#{self.ciap_code} - #{self.formal_name}"
