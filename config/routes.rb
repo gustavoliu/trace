@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   get 'reports/home'
 
   resources :reports, only: [:index]
