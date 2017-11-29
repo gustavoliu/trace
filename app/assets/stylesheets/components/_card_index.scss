@@ -1,5 +1,5 @@
 .card {
-  height: 140px;
+  height: 160px;
 
   a {
     color: gray;
@@ -7,8 +7,8 @@
 }
 
 .card-content {
-  height: 107px;
-  width: 200px;
+  height: 130px;
+  width: 250px;
   background-size: cover !important;
   background-position: center;
   color: gray;
@@ -22,7 +22,7 @@
 }
 
 .card-button {
-  width:200px;
+  width:250px;
   position: absolute;
   margin-top: 3px;
   margin-left: 0px;
@@ -43,7 +43,12 @@
 
 
 .card-content:hover {
-  opacity: 0.3;
+  opacity: 0.6;
   text-decoration: none;
+  div {
+    text-decoration: none;
+    color:#0b1e3b;
+    opacity: 1;
+  }
 }
 
