@@ -18,8 +18,11 @@ Rails.application.routes.draw do
 
   resources :patients, except: [ :destroy ] do
     resources :consults, only: [ :new, :create, :edit ]
+    resources :patient_problems, only: [ :new, :create, :edit, :index]
     get 'new_with_soap', to: 'consults#new_with_soap'
   end
+
+  resources :patient_problems, only: [ :destroy ]
 
   get 'list_consults_by_date', to: 'consults#list_consults_by_date'
 

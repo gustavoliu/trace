@@ -16,6 +16,16 @@
         <p><strong>Número SUS:</strong> <%= @patient.sus_number %></p>
         <p><strong>Endereço:</strong> <%= @patient.address %></p>
         <br>
+
+        <div>
+          <p><strong>Lista de problemas:</strong></p>
+
+            <% @patient.patient_problems.map { |pp| "#{pp.disease.ciap_code} - #{pp.disease.formal_name}" }.each do |disease| %>
+            <p><strong><%= disease[0,3] %></strong><%= disease[3,disease.length] %></p>
+            <% end %>
+
+        </div>
+
         <%= link_to 'Nova Consulta', patient_new_with_soap_path(@patient), class:'btn btn-success' %>
       </div>
     </div>
