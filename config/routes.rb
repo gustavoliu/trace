@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'reports/home'
+  get 'reports/get_pop_pyramid'
 
   resources :reports, only: [:index]
 

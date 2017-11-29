@@ -43,6 +43,15 @@ class ReportsController < ApplicationController
     end
   end
 
+  def get_complaints
+    @complaints = Soap.joins(consult: { soaps: :complaint })
+                  .where("consults.consult_date" => @month..@month.end_of_month)
+                  .group("diseases.formal_name")
+                  .order("COUNT(diseases.formal_name) DESC")
+                  .limit(8)
+                  .count
+  end
+
   def get_consults
     @consults_by_month = Consult.where(consult_date: @month..Date.current)
                           .group("date_trunc('month', consult_date)")
@@ -54,7 +63,6 @@ class ReportsController < ApplicationController
   end
 
   def get_diagnosis
-
     @diagnosis = Soap.joins(consult: { soaps: :diagnosis })
                   .where("consults.consult_date" => @month..@month.end_of_month)
                   .group("diseases.formal_name") # diagnosis_id
@@ -75,12 +83,7 @@ class ReportsController < ApplicationController
     # }
   end
 
-  def get_complaints
-    @complaints = Soap.joins(consult: { soaps: :complaint })
-                  .where("consults.consult_date" => @month..@month.end_of_month)
-                  .group("diseases.formal_name")
-                  .order("COUNT(diseases.formal_name) DESC")
-                  .limit(8)
-                  .count
+  def get_pop_pyramid
+
   end
 end

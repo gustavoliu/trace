@@ -6,4 +6,27 @@
   box-shadow: 1px 2px 2px 0;
 }
 
+svg {
+  border: 1px solid #ccc;
+}
 
+.axis line,
+.axis path {
+  shape-rendering: crispEdges;
+  fill: transparent;
+  stroke: #555;
+}
+.axis text {
+  font-size: 11px;
+}
+
+
+.bar {
+  fill-opacity: 0.5;
+}
+.bar.left {
+  fill: steelblue;
+}
+.bar.right {
+  fill: firebrick;
+}
