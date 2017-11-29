@@ -10,7 +10,7 @@ User.destroy_all
 puts "Importando diseases"
 csv_text = File.read('CIAP2.csv')
 csv = CSV.parse(csv_text, {col_sep: ';'})
-csv.first(1).each do |row|
+csv.each do |row|
   d = Disease.new
   d.ciap_code = row[0]
   d.formal_name = row[1]
@@ -33,10 +33,10 @@ csv.each do |row|
   r = Patient.new
   r.full_name = row[0]
   r.birthday = row[1].presence || rand(365 * 20..365 * 70).days.ago
-  r.sus_number = row[2]
-  r.prontuario_number = row[3]
-  r.gender = row[4]
+  r.gender = row[5]
   r.save!
+  r.update({sus_number: Faker::Number.number(5),
+    prontuario_number: Faker::Number.number(5), address: Faker::Address.street_address})
 
   rand(0..2).times do
     PatientProblem.create!(patient: r, disease: diagnoses.sample)
