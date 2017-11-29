@@ -22,6 +22,6 @@ class Patient < ApplicationRecord
   end
 
   def titleize_name
-     self.full_name = self.full_name.titleize
+     self.full_name = self.full_name.split.each{|i| i.capitalize!}.join(' ')
   end
 end
