@@ -66,10 +66,10 @@ class ReportsController < ApplicationController
   def get_exams
     @exams = Soap.joins(:consult)
                   .where("consults.consult_date" => @month..@month.end_of_month)
-                  .group(:exams)
-                  .order("COUNT(exams) DESC")
                   .limit(10)
-                  .count
+    # @exams = {
+    #   "Hemograma" => 2
+    # }
   end
 
   def get_complaints
