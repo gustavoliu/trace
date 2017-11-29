@@ -67,6 +67,10 @@ class ReportsController < ApplicationController
     @exams = Soap.joins(:consult)
                   .where("consults.consult_date" => @month..@month.end_of_month)
                   .limit(10)
+                  .map { |soap| soap.exams }
+                  .flatten
+                  .each_with_object(Hash.new(0)) { |exam,counts| counts[exam] += 1 }
+    # Output: hash with { exam_name (key) => exam_count (value) }
     # @exams = {
     #   "Hemograma" => 2
     # }
