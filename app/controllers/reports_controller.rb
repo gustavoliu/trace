@@ -11,7 +11,7 @@ class ReportsController < ApplicationController
     get_complaints
   end
 
-  private
+
 
   def get_consults
     @consults_by_month = Consult.where(consult_date: @month..Date.current)
