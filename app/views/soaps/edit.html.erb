@@ -1,1 +1,17 @@
+<div class="container">
+  <h2>
+    <%= @patient.full_name.titleize %>, <%= @patient.age %>
+    <%= link_to edit_patient_path(@patient), class:'edit_link' do %>
+      <i class="fa fa-pencil" aria-hidden="true"></i>
+    <% end %>
+  </h2>
+  <p><strong>Data de Nascimento:</strong> <%= @patient.birthday.strftime("%d/%m/%Y") %> </p>
+  <p><strong>Gênero:</strong> <%= @patient.gender  %></p>
+  <p><strong>Prontuário:</strong> <%= @patient.prontuario_number %></p>
+  <p><strong>Número SUS:</strong> <%= @patient.sus_number %></p>
+  <p><strong>Endereço:</strong> <%= @patient.address %></p>
+  <br>
+  <h2>Editar SOAP</h2>
+</div>
+
 <%= render 'form' %>

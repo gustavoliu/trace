@@ -31,6 +31,7 @@ class SoapsController < ApplicationController
 
   def edit
     @consult = @soap.consult
+    @patient = @soap.consult.patient
     @complaints = Disease.all
     @diagnoses = Disease.all
   end
