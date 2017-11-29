@@ -47,34 +47,36 @@ class ReportsController < ApplicationController
     @consults_by_month = Consult.where(consult_date: @month..Date.current)
                           .group("date_trunc('month', consult_date)")
                           .count
+                          .sort_by { |k,v| k }
                           .map do |month, count|
                             [month.strftime("%B %Y"), count]
                           end
   end
 
   def get_diagnosis
-    # @consults = Consult.where(consult_date: "Fri, 24 Nov 2017")
-    #@diagnosis = Soap.select([:diagnosis, consult_id: consults]).group(:created_at).first(10)
-    # TODO: Soap.joins(:consult).where("consults.consult_date" => month..@month.end_of_month)
-    @diagnosis = Soap.where(created_at: @month..@month.end_of_month)
-                  .group(:diagnosis_id) # diagnosis_id
-                  .order("COUNT(diagnosis_id) DESC")
-                  .limit(10)
-                  .count
-  end
 
-  def get_exams
-    @exams = Soap.where(created_at: @month..@month.end_of_month)
-                  .group(:exams)
-                  .order("COUNT(exams) DESC")
+    @diagnosis = Soap.joins(consult: { soaps: :diagnosis })
+                  .where("consults.consult_date" => @month..@month.end_of_month)
+                  .group("diseases.formal_name") # diagnosis_id
+                  .order("COUNT(diseases.formal_name) DESC")
                   .limit(5)
                   .count
   end
 
+  def get_exams
+    @exams = Soap.joins(:consult)
+                  .where("consults.consult_date" => @month..@month.end_of_month)
+                  .group(:exams)
+                  .order("COUNT(exams) DESC")
+                  .limit(10)
+                  .count
+  end
+
   def get_complaints
-    @complaints = Soap.where(created_at: @month..@month.end_of_month)
-                  .group(:complaint_id)
-                  .order("COUNT(complaint_id) DESC")
+    @complaints = Soap.joins(consult: { soaps: :complaint })
+                  .where("consults.consult_date" => @month..@month.end_of_month)
+                  .group("diseases.formal_name")
+                  .order("COUNT(diseases.formal_name) DESC")
                   .limit(5)
                   .count
   end
