@@ -29,6 +29,7 @@ gem "chartkick"
 gem "select2-rails"
 gem 'select2_simple_form', github: 'lndl/select2_simple_form', tag: '0.7.3'
 gem 'bootstrap-datepicker-rails'
+gem 'faker'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
@@ -37,7 +38,6 @@ gem 'pg_search'
 
 group :development do
   gem 'dotenv-rails'
-  gem 'faker'
 end
 
 group :development, :test do
