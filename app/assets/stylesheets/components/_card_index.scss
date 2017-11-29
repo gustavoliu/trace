@@ -2,6 +2,7 @@
   height: 160px;
 
   a {
+    text-decoration: none;
     color: gray;
   }
 }
@@ -44,9 +45,7 @@
 
 .card-content:hover {
   opacity: 0.6;
-  text-decoration: none;
   div {
-    text-decoration: none;
     color: #0E1F39;
     opacity: 1;
   }
