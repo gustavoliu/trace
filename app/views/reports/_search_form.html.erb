@@ -3,7 +3,7 @@
       <%= form_tag reports_path, method: :get do %>
         <%= render 'datepicker_form' %>
         <div class="search-patient">
-          <%= text_field_tag 'term', params[:term], placeholder: " Digite o diagnóstico", class: "search_box"%>
+          <%= collection_select nil, :term, @diagnoses, :id, :ciap_and_description, { placeholder: 'Digite o diagnóstico', include_blank: true, selected: params[:term] }, class: "search_box", "data-ui" => "select2-simpleform" %>
 
           <%= submit_tag 'Buscar', class: "btn btn-primary" %>
         </div>
