@@ -27,21 +27,26 @@ diagnoses = Disease.where(is_diagnosis: true)
 complaints = Disease.all
 
 puts "Importando pacientes"
-csv_patient = File.read('SEED.csv')
-csv = CSV.parse(csv_patient, {col_sep: ';'})
-csv.each do |row|
-  r = Patient.new
-  r.full_name = row[0]
-  r.birthday = row[1].presence || rand(365 * 20..365 * 70).days.ago
-  r.gender = row[5]
-  r.save!
-  r.update({sus_number: Faker::Number.number(5),
-    prontuario_number: Faker::Number.number(5), address: Faker::Address.street_address})
+csv_patient = CSV.parse(File.read('SEED.csv'), {col_sep: ';'})
+csv_address = CSV.parse(File.read('seed_address.csv'))
+csv_patient.each do |row|
+  patient = Patient.new
+  patient.full_name = row[0]
+  patient.birthday = row[1].presence || rand(365 * 20..365 * 70).days.ago
+  patient.gender = row[5]
+  patient.sus_number = Faker::Number.number(5)
+  patient.prontuario_number = Faker::Number.number(5)
+  patient.address = csv_address.sample(1)[0][0]
+  patient.save!
 
+
+  puts 'Importando Patient Problems'
   rand(0..2).times do
-    PatientProblem.create!(patient: r, disease: diagnoses.sample)
+    PatientProblem.create!(patient: patient, disease: diagnoses.sample)
   end
 end
+
+puts 'TERMINOU IMPORT DE PACIENTES'
 
 user = User.create!(email: "admin@admin.com", password: "123456")
 patients = Patient.all
@@ -50,9 +55,9 @@ puts "Importando consultas..."
 100.times do
   consult = Consult.create!(
     patient: patients.sample,
-    consult_date: rand(1..120).days.ago,
+    consult_date: rand(1..365).days.ago,
     professional: user.professional,
-  )
+    )
 
   rand(1..2).times do
     Soap.create!(
@@ -61,6 +66,6 @@ puts "Importando consultas..."
       complaint: complaints.sample,
       exams: Soap::EXAMS_OPTIONS.sample(rand(0..2)),
       referring: Soap::REFERRING_OPTIONS.sample(rand(0..2)),
-    )
+      )
   end
 end
