@@ -1,10 +1,10 @@
 module ApplicationHelper
 
    def avatar(professional, attrs = {})
-    if professional.google_photo != nil && professional.photo == nil
-      image_tag(professional.google_photo, attrs)
-    elsif professional.photo != nil && professional.google_photo == nil
+    if professional.photo.present?
       cl_image_tag(professional.photo.path, attrs)
+    elsif professional.google_photo.present?
+      image_tag(professional.google_photo, attrs)
     else
       image_tag("http://placehold.it/50/50", attrs)
     end

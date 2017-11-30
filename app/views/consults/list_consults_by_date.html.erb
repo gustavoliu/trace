@@ -1,6 +1,9 @@
 <div class="container">
-  <h2>Ficha de produção</h2>
-  <h4>Data: <%= date_format(@date) %></h4>
+  <div id="relatory-header">
+    <h2>Ficha de produção</h2>
+    <h4>Data: <%= date_format(@date) %></h4>
+    <a href="#" class="btn btn-success col-md-2 col-md-offset-4"> Imprimir </a>
+  </div>
   <div class="row">
     <% @consults.each do |c| %>
       <div class="col-xs-12">
@@ -33,3 +36,4 @@
     <% end %>
   </div>
 </div>
+
