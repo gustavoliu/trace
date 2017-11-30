@@ -32,19 +32,20 @@
 
 .banner_search {
   text-align: left;
-  height: 250px;
+  min-height: 250px;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
-  position: relative;
+  // position: relative;
+  padding-left: 30px;
 }
 
-.banner_search h1 {
-  position: absolute;
-  left: 30px;
-  top: 30px;
-}
+// .banner_search h1 {
+//   position: absolute;
+//   left: 30px;
+//   top: 30px;
+// }
 
-.banner_search h2 {
-  position: absolute;
-  left: 30px;
-  top: 100px;
-}
+// .banner_search h2 {
+//   position: absolute;
+//   left: 30px;
+//   top: 100px;
+// }
