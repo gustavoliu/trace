@@ -64,22 +64,43 @@
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li>
             <%= link_to patients_path do %>
-              <i class="fa fa-home"></i>  <%= t(".patients", default: "Home") %>
+              <i class="fa fa-home"></i>
+              Home
             <% end %>
           </li>
           <li>
             <%= link_to edit_professional_path(current_user) do %>
-              <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+              <i class="fa fa-user"></i>
+              Perfil
             <% end %>
           </li>
           <li>
             <%= link_to new_patient_path do %>
-              <i class="fa fa-address-book-o"></i>  <%= t(".new_patient", default: "Adicionar Paciente") %>
+              <i class="fa fa-address-book-o"></i>
+              Adicionar Paciente
             <% end %>
           </li>
           <li>
+            <%= link_to list_consults_by_date_path do %>
+              <i class="fa fa-line-chart" aria-hidden="true"></i>
+              Ficha de Produção
+              <% end %>
+          </li>
+          <li>
+            <%= link_to reports_home_path do %>
+              <i class="fa fa-pie-chart" aria-hidden="true"></i>
+              Dashboard
+              <% end %>
+          </li>
+          <li>
+            <%= link_to reports_path do %>
+              <i class="fa fa-map" aria-hidden="true"></i>
+              Mapeamento
+            <% end %>
+          <li>
             <%= link_to destroy_user_session_path, method: :delete do %>
-              <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+              <i class="fa fa-sign-out"></i>
+              Log out
             <% end %>
           </li>
         </ul>

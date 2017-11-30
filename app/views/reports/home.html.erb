@@ -1,12 +1,14 @@
 
 <div class="container">
-  <div class="form-wrapper">
-    <h3>Análise mensal - <%= month_format(@month) %></h3>
-    <p>Selecione outro mês:</p>
-    <%= form_tag reports_home_path, method: :get do %>
-      <%= date_select nil, :month, selected: @month, discard_day: true, end_year: Date.current.year, start_year: Date.current.year - 3 %>
-      <button type="submit" class="btn btn-primary">Buscar</button>
-    <% end %>
+  <div  class="row">
+    <div class="col-xs-12 col-md-8 col-md-offset-0,5" >
+      <h3>Análise mensal - <%= month_format(@month) %></h3>
+        <p>Selecione outro mês:</p>
+        <%= form_tag reports_home_path, method: :get do %>
+          <%= date_select nil, :month, selected: @month, discard_day: true, end_year: Date.current.year, start_year: Date.current.year - 3 %>
+          <button type="submit" class="btn btn-primary">Buscar</button>
+        <% end %>
+    </div>
   </div>
   <div class="row">
       <%= render "get_consults" %>
