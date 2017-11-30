@@ -84,8 +84,27 @@ class ReportsController < ApplicationController
   end
 
   def get_pop_pyramid
-    # @count = {
-    #   m0a2: count_patients("Masculino", 0, 2)
-    # }
+
+    @population_pyramid = []
+
+    [0..2, 3..9, 10..19, 20..29, 30..39, 40..49, 50..59, 60..69, 70..79, 80..89,
+     90..99].each do |range|
+      @population_pyramid << {
+        group: "#{range.begin}-#{range.end}",
+        male: count_patients("Masculino", range.begin, range.end),
+        female: count_patients("Feminino", range.begin, range.end)
+      }
+    end
+
+    @population_pyramid << {
+      group: ">= 100",
+      male: count_patients("Masculino", 100, 999),
+      female: count_patients("Feminino", 100, 999)
+    }
+
+  end
+
+  def count_patients(gender, start_age, end_age)
+    Patient.where(gender: gender).map { |pt| pt.age }.count { |age| age >= start_age && age <= end_age }
   end
 end
