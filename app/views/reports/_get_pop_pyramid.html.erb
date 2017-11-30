@@ -1,4 +1,9 @@
-<script src="http://d3js.org/d3.v3.min.js"></script>
+<div class="col-xs-12">
+  <h4>Pirâmide demográfica da população atendida</h4>
+  <div>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+  </div>
+</div>
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
@@ -24,21 +29,8 @@
         pointB = w - regionWidth;
 
     // some contrived data
-    var exampleData = [
-      {group: '0-2', male: 10, female: 12},
-      {group: '3-5', male: 10, female: 12},
-      {group: '5-9', male: 10, female: 12},
-      {group: '10-19', male: 14, female: 15},
-      {group: '20-29', male: 15, female: 18},
-      {group: '30-39', male: 18, female: 18},
-      {group: '40-49', male: 21, female: 22},
-      {group: '50-59', male: 19, female: 24},
-      {group: '60-69', male: 15, female: 14},
-      {group: '70-79', male: 8, female: 10},
-      {group: '80-89', male: 4, female: 5},
-      {group: '90-99', male: 2, female: 3},
-      {group: '> 100', male: 1, female: 1},
-    ];
+
+    var exampleData = <%=raw @population_pyramid.to_json %>;
 
     // GET THE TOTAL POPULATION SIZE AND CREATE A FUNCTION FOR RETURNING THE PERCENTAGE
     var totalPopulation = d3.sum(exampleData, function(d) { return d.male + d.female; }),

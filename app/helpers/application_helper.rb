@@ -10,10 +10,6 @@ module ApplicationHelper
     end
   end
 
-  def count_patients(gender, start_age, end_age)
-    Patient.where(gender: gender).map { |pt| pt.age }.count { |age| age >= start_age && age <= end_age }
-  end
-
   def date_format(date)
     date.strftime("%d/%m/%Y")
   end
