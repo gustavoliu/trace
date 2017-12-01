@@ -51,7 +51,13 @@
   min-width: 500px  ;
   border-radius: 4px;
   color: black;
-  margin-bottom: 30px;
+}
+
+.form_search {
+  input[type=submit] {
+    margin-top: -13px;
+    margin-left: 10px;
+  }
 }
 
 .search-patient {
