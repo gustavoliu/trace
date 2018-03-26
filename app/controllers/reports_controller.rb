@@ -13,6 +13,7 @@ class ReportsController < ApplicationController
 
   def index
     @patients = Patient.all.joins(consults: { soaps: :diagnosis })
+    @diagnoses = Disease.where(is_diagnosis: true)
 
     if params[:start_date].present?
       start_date = Date.parse(params[:start_date])
@@ -33,7 +34,7 @@ class ReportsController < ApplicationController
     # end
 
     if params[:term].present?
-      @patients = @patients.where("diseases.ciap_code ILIKE ?", "%#{params[:term]}%")
+      @patients = @patients.where("soaps.diagnosis_id" => params[:term])
     end
 
 
